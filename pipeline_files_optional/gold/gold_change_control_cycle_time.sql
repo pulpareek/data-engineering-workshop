@@ -1,0 +1,36 @@
+-- ============================================================================
+-- OPTIONAL | LAB 06 | GOLD | change-control cycle time
+--   Practice copy. Fill the latest-snapshot key and the submit -> approve duration.
+-- ============================================================================
+-- -- ============================================================================
+-- -- GOLD | change-control cycle time  (materialized view)
+-- -- Grain : one row per change. Site or month rollups belong in the metric view
+-- --         or the dashboard, not in another table.
+-- -- ============================================================================
+-- CREATE OR REFRESH MATERIALIZED VIEW gold_change_control_cycle_time
+-- COMMENT "Latest state and milestone durations (days) for each change control. Grain: one row per change. Synthetic training data."
+-- TBLPROPERTIES ('quality' = 'gold')
+-- AS
+-- WITH latest AS (
+--   SELECT *
+--   FROM silver_change_control
+--   QUALIFY row_number() OVER (PARTITION BY <FILL-IN> ORDER BY source_file DESC) = 1
+-- )
+-- SELECT
+--   source_change_id,
+--   site_code,
+--   product_code,
+--   change_type,
+--   workflow_status,
+--   workflow_status IN ('SUBMITTED', 'APPROVED', 'IMPLEMENTED')       AS is_open,
+--   submitted_at,
+--   approved_at,
+--   effective_at,
+--   closed_at,
+--   <FILL-IN: datediff(end, start)>            AS submit_to_approve_days,
+--   datediff(to_date(effective_at), to_date(approved_at))             AS approve_to_effective_days,
+--   datediff(to_date(closed_at),    to_date(submitted_at))            AS submit_to_close_days,
+--   datediff(coalesce(to_date(closed_at), to_date(:as_of_date)), to_date(submitted_at)) AS age_days,
+--   source_file                                                       AS latest_source_file,
+--   to_date(:as_of_date)                                               AS as_of_date
+-- FROM latest;

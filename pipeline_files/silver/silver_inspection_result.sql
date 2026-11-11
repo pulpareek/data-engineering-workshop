@@ -1,0 +1,71 @@
+-- ============================================================================
+-- LAB 05 | SILVER | QC results (inspection_result)
+--   1) Uncomment the whole file (select all, Cmd/Ctrl + /).
+--   2) Turn each rule in dq_issues into a CONSTRAINT ... EXPECT (...) ON VIOLATION DROP ROW.
+--      Tip: an EXPECT states what GOOD looks like -- the opposite of the CASE WHEN.
+--   3) Decide: is an out-of-spec result a BAD RECORD (quarantine) or a BAD RESULT (keep + flag)?
+-- ============================================================================
+-- -- ============================================================================
+-- -- SILVER | inspection results
+-- -- Grain  : one row per valid QC measurement
+-- -- Key distinction:
+-- --   * a BAD RECORD (no lot, '<LOQ' text, negative titer) -> quarantine
+-- --   * a BAD RESULT (valid record, value outside spec)    -> kept, flagged is_oos
+-- -- ============================================================================
+--
+-- CREATE TEMPORARY VIEW inspection_result_prepared AS
+-- WITH typed AS (            -- Bronze is all STRING: cast here. try_* gives NULL, never an error
+--   SELECT measured_value AS measured_value_raw,   -- the text exactly as sent, e.g. '<LOQ'
+--          * EXCEPT (measured_at, measured_value, lower_limit, upper_limit),
+--     try_to_timestamp(measured_at, 'yyyy-MM-dd HH:mm:ss') AS measured_at,
+--     try_cast(measured_value AS DOUBLE) AS measured_value,
+--     try_cast(lower_limit AS DOUBLE) AS lower_limit,
+--     try_cast(upper_limit AS DOUBLE) AS upper_limit
+--   FROM STREAM(bronze_inspection_result)
+-- )
+-- SELECT
+--   source_sample_id,
+--   lot_id,
+--   site_code,
+--   test_code,
+--   measured_value,
+--   measured_value_raw,
+--   lower_limit,
+--   upper_limit,
+--   measured_at,
+--   (measured_value < lower_limit OR measured_value > upper_limit) AS is_oos,
+--   source_file,
+--   ingested_at,
+--   filter(array(
+--     CASE WHEN source_sample_id IS NULL THEN 'missing source_sample_id' END,
+--     CASE WHEN lot_id IS NULL           THEN 'missing lot_id' END,
+--     CASE WHEN site_code IS NULL        THEN 'missing site_code' END,
+--     CASE WHEN measured_at IS NULL      THEN 'missing measured_at' END,
+--     CASE WHEN measured_value IS NULL   THEN 'measured_value not numeric' END,
+--     CASE WHEN measured_value < 0       THEN 'negative measured_value' END,
+--     CASE WHEN lower_limit IS NULL OR upper_limit IS NULL THEN 'missing spec limits' END,
+--     CASE WHEN lower_limit > upper_limit THEN 'lower_limit above upper_limit' END
+--   ), x -> x IS NOT NULL) AS dq_issues
+-- FROM typed;
+--
+-- CREATE OR REFRESH STREAMING TABLE silver_inspection_result (
+--   CONSTRAINT has_sample_id     EXPECT (source_sample_id IS NOT NULL) ON VIOLATION DROP ROW,
+--   CONSTRAINT has_lot_id        EXPECT (<FILL-IN>)           ON VIOLATION DROP ROW,
+--   CONSTRAINT has_site_code     EXPECT (<FILL-IN>)        ON VIOLATION DROP ROW,
+--   CONSTRAINT has_measured_at   EXPECT (<FILL-IN>)      ON VIOLATION DROP ROW,
+--   CONSTRAINT numeric_value     EXPECT (<FILL-IN>)   ON VIOLATION DROP ROW,
+--   CONSTRAINT non_negative      EXPECT (<FILL-IN>) ON VIOLATION DROP ROW,
+--   CONSTRAINT has_spec_limits   EXPECT (<FILL-IN>) ON VIOLATION DROP ROW,
+--   CONSTRAINT ordered_limits    EXPECT (<FILL-IN>) ON VIOLATION DROP ROW
+-- )
+-- COMMENT "Validated QC results with an out-of-spec flag. Grain: one row per measurement."
+-- TBLPROPERTIES ('quality' = 'silver')
+-- AS SELECT * EXCEPT (dq_issues), CASE WHEN is_oos THEN 'OOS' ELSE 'PASS' END AS result_status
+-- FROM STREAM(inspection_result_prepared);
+--
+-- CREATE OR REFRESH STREAMING TABLE silver_inspection_result_quarantine
+-- COMMENT "QC rows that failed at least one record-quality rule, with the reasons."
+-- TBLPROPERTIES ('quality' = 'quarantine')
+-- AS SELECT *, array_join(dq_issues, '; ') AS quarantine_reason
+-- FROM STREAM(inspection_result_prepared)
+-- WHERE size(dq_issues) > 0;

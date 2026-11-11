@@ -1,0 +1,102 @@
+# Metadata as code: descriptions + tags for every certified table.
+# Reviewed in pull requests like any other code; applied after every pipeline run in EVERY target
+# by src/governance/apply_metadata (job task), so dev, QA and prod always carry the same metadata.
+#
+# Stewards: edit descriptions here (or approve AI suggestions in notebook 13), open a PR.
+# `governed_tags` are validated by Unity Catalog tag policies; rejected values are reported, not ignored.
+
+defaults:
+  tags:
+    domain: quality
+    data_product: lot_release_readiness
+    source_system: synthetic_workshop
+  governed_tags: {}          # e.g. data_classification: u-nnpi  (must be an allowed value of the policy)
+
+tables:
+  gold_deviation_lifecycle:
+    owner_group: iops-quality-data-owners
+    steward: quality-data-stewards
+    certification: certified
+    tags: {layer: gold, grain: deviation_case}
+    description: >-
+      Current lifecycle of each deviation case with its corrective-action summary.
+      Grain and key: one row per source_case_id. Status is the latest event by source_updated_at.
+      Joins: lot_id to gold_lot_release_readiness.lot_id (NULL when a deviation is not tied to a lot).
+      Caveat: severity is NULL for cases reported before the QMS sent the field; report it as NOT CLASSIFIED.
+      Synthetic training data, not a quality decision.
+    columns:
+      source_case_id: Deviation case identifier from the QMS (synthetic).
+      current_status: Latest normalized status (OPEN, IN_INVESTIGATION, PENDING_CAPA, CLOSED, CANCELLED).
+      severity: Latest non-null severity (MINOR, MAJOR, CRITICAL); NULL for cases reported before the field existed.
+      is_open: True when current_status is not CLOSED or CANCELLED.
+      is_overdue: True when the case is open and the as-of date is after target_due_at.
+      age_days: Days from first report to resolution, or to the as-of date if still open.
+      action_count: Number of corrective actions linked to the case (deduplicated).
+      open_action_count: Corrective actions still OPEN or IN_PROGRESS.
+    column_tags:
+      description: {contains_free_text: "true"}
+      is_overdue: {kpi: "true"}
+
+  gold_change_control_cycle_time:
+    owner_group: iops-quality-data-owners
+    steward: quality-data-stewards
+    certification: certified
+    tags: {layer: gold, grain: change_control}
+    description: >-
+      Latest state and milestone durations for each change control.
+      Grain and key: one row per source_change_id. Durations are calendar days.
+      Caveat: the feed has no update timestamp, so the latest file wins.
+    columns:
+      workflow_status: Normalized workflow state (SUBMITTED, APPROVED, IMPLEMENTED, CLOSED, REJECTED).
+      submit_to_approve_days: Days from submission to approval; NULL until approved.
+      submit_to_close_days: Days from submission to closure; NULL until closed.
+      is_open: True for SUBMITTED, APPROVED or IMPLEMENTED changes.
+    column_tags:
+      submit_to_approve_days: {kpi: "true"}
+
+  gold_inspection_quality:
+    owner_group: iops-quality-data-owners
+    steward: qc-data-stewards
+    certification: certified
+    tags: {layer: gold, grain: site_test_day}
+    description: >-
+      QC pass rate and out-of-spec counts. Grain and key: site_code x test_code x measured_date.
+      A result is out of spec when measured_value is outside [lower_limit, upper_limit].
+      Caveat: excludes results held in silver_inspection_result_quarantine (for example '<LOQ',
+      negative values or inverted limits), so counts can be lower than what the LIMS sent.
+    columns:
+      pass_rate_pct: Percentage of results inside the specification limits.
+      oos_results: Count of valid results outside the specification limits.
+    column_tags:
+      pass_rate_pct: {kpi: "true"}
+
+  gold_oos_events:
+    owner_group: iops-quality-data-owners
+    steward: qc-data-stewards
+    certification: certified
+    tags: {layer: gold, grain: oos_result}
+    description: >-
+      Every out-of-spec QC result, enriched with product and lot dates.
+      Grain and key: one row per source_sample_id. Joins: lot_id to gold_lot_release_readiness.lot_id.
+
+  gold_lot_release_readiness:
+    owner_group: iops-quality-data-owners
+    steward: quality-data-stewards
+    certification: certified
+    tags: {layer: gold, grain: lot}
+    description: >-
+      Readiness signal per lot combining QC, deviations, corrective actions and change controls.
+      Grain and key: one row per lot_id with a completed batch record.
+      Caveat: a lot can be READY_FOR_QA_REVIEW while some of its QC records sit in
+      silver_inspection_result_quarantine; check that table for the lot before relying on the status.
+      Training signal on synthetic data, not a release decision.
+    columns:
+      readiness_status: BLOCKED (OOS or open major/critical deviation), AT_RISK (other open items or yield below 85%), else READY_FOR_QA_REVIEW.
+      blocking_reasons: Human-readable reasons behind the status.
+      yield_pct: Actual over planned yield, percent.
+
+  silver_inspection_result_quarantine:
+    steward: qc-data-stewards
+    certification: uncertified
+    tags: {layer: quarantine}
+    description: QC rows rejected by a record-quality rule, with quarantine_reason. Review and fix at the source.

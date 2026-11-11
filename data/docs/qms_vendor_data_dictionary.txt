@@ -1,0 +1,36 @@
+QUALITRACK QMS 9 -- FIELD REFERENCE (FICTIONAL VENDOR DOCUMENTATION FOR TRAINING USE ONLY)
+
+Module: Deviation Management
+- source_case_id: System-generated identifier of a deviation record. Format DEV-YYYY-NNNN. Immutable once created.
+- event_code: Deviation category. DEV-EQP equipment malfunction or alarm; DEV-DOC documentation or GDP error;
+  DEV-ENV environmental monitoring excursion; DEV-PROC process parameter outside normal operating range;
+  DEV-LAB laboratory or sample handling issue.
+- status_code: Workflow state. OPEN (logged, triage pending); IN_INVESTIGATION (root cause analysis underway);
+  PENDING_CAPA (investigation complete, corrective actions open); CLOSED (QA approved closure); CANCELLED (raised in error).
+- reported_at: Date and time the deviation was first recorded by the originator.
+- target_due_at: Due date for closure, by default 30 calendar days after reported_at per site procedure.
+- resolved_at: Date and time QA approved closure or cancellation.
+- severity: Risk classification introduced in release 9.2. MINOR (no product impact), MAJOR (potential product impact,
+  requires impact assessment), CRITICAL (probable product impact, requires immediate escalation).
+- lot_id: Affected manufacturing lot when the deviation is lot specific; empty for facility-level deviations.
+
+Module: CAPA
+- source_action_id: Identifier of a corrective or preventive action, format CA-NNNNNN.
+- action_code: CONTAINMENT (immediate control), CORRECTIVE (removes the root cause), PREVENTIVE (prevents recurrence
+  elsewhere), EFFECTIVENESS_CHECK (verifies the action worked).
+- action_status: OPEN, IN_PROGRESS, COMPLETED, CANCELLED.
+- assigned_group: Functional group accountable for the action.
+
+Module: Change Control
+- source_change_id: Identifier of a change control record, format CC-YYYY-NNN.
+- change_type: EQUIPMENT, PROCESS, DOCUMENT, SUPPLIER, ANALYTICAL_METHOD. EQUIPMENT, PROCESS and ANALYTICAL_METHOD
+  changes are product-quality impacting and require QA approval before implementation.
+- workflow_status: SUBMITTED, APPROVED, IMPLEMENTED, CLOSED, REJECTED.
+- effective_at: Date the change was implemented in the GMP environment.
+
+LIMS interface (QualiTrack Lab Connector)
+- test_code: TITER_G_L product titer in g/L; SEC_MONOMER_PCT size-exclusion purity, percent monomer;
+  ENDOTOXIN_EU_ML bacterial endotoxin in EU/mL; BIOBURDEN_CFU colony forming units per 10 mL; PH; HCP_PPM host cell protein in ppm.
+- measured_value: Reported numeric result. Results below the limit of quantitation are transmitted as the text '<LOQ'.
+- lower_limit / upper_limit: Specification limits valid for the product at the time of testing.
+- A result outside [lower_limit, upper_limit] is an Out-Of-Specification (OOS) result and must be investigated.

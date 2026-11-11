@@ -1,0 +1,36 @@
+-- ============================================================================
+-- LAB 03 | BRONZE | bronze_change_control   (your second Bronze table)
+-- Goal   : ingest landing/change_control_feed incrementally with Auto Loader.
+-- Recipe : same pattern as your QC-results file. Change ONLY:
+--            1) the table name         -> bronze_change_control
+--            2) the folder             -> :landing_root || '/change_control_feed'
+--            3) the schema (contract)   -> one 'name STRING' per column (Bronze keeps
+--                                          values as sent; Silver casts them):
+--                 source_change_id STRING
+--                 site_code STRING
+--                 product_code STRING
+--                 change_type STRING
+--                 workflow_status STRING
+--                 submitted_at STRING
+--                 approved_at STRING
+--                 effective_at STRING
+--                 closed_at STRING
+-- Then    : remove the leading '-- ' from every line below and replace each <FILL-IN>.
+-- Next    : you write the change-control Silver table in Lab 05.
+-- ============================================================================
+
+-- CREATE OR REFRESH STREAMING TABLE <FILL-IN>
+-- COMMENT "Raw change-control workflow snapshots (synthetic)."
+-- TBLPROPERTIES ('quality' = 'bronze', 'pipelines.reset.allowed' = 'false')
+-- AS SELECT
+--   *,
+--   _metadata.file_path              AS source_file,
+--   _metadata.file_modification_time AS source_file_modified_at,
+--   current_timestamp()              AS ingested_at
+-- FROM STREAM read_files(
+--   :landing_root || '<FILL-IN: /folder name>',   -- pipeline parameter + the feed folder
+--   format            => 'csv',
+--   header            => true,
+--   schema            => '<FILL-IN>',   -- the Bronze data contract
+--   rescuedDataColumn => '_rescued_data'   -- anything outside the contract lands here
+-- );

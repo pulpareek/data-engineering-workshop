@@ -1,0 +1,900 @@
+{
+  "after_run": {
+    "1": {
+      "bronze": {
+        "batch_record_feed": 46,
+        "change_control_feed": 55,
+        "corrective_action_feed": 108,
+        "deviation_event_feed": 287,
+        "inspection_result_feed": 1539
+      },
+      "gold_change_control_cycle_time": {
+        "avg_submit_to_approve_days": 17.7,
+        "avg_submit_to_close_days": 44.28,
+        "open": 15,
+        "rows": 55
+      },
+      "gold_deviation_lifecycle": {
+        "open": 34,
+        "overdue": 26,
+        "rows": 111,
+        "total_actions": 108,
+        "with_open_actions": 9
+      },
+      "gold_inspection_quality": {
+        "oos_results": 20,
+        "pass_rate_pct": 98.7,
+        "rows": 992,
+        "total_results": 1539
+      },
+      "gold_lot_release_readiness": {
+        "AT_RISK": 14,
+        "BLOCKED": 6,
+        "READY_FOR_QA_REVIEW": 26,
+        "rows": 46
+      },
+      "gold_oos_events": {
+        "rows": 20
+      },
+      "orphan_action_cases": 0,
+      "silver_clean": {
+        "batch_record_feed": 46,
+        "change_control_feed": 55,
+        "corrective_action_feed": 108,
+        "deviation_event_feed": 286,
+        "inspection_result_feed": 1539
+      },
+      "silver_corrective_action_dedup_rows": 108,
+      "silver_quarantine": {
+        "change_control_feed": 0,
+        "corrective_action_feed": 0,
+        "deviation_event_feed": 1,
+        "inspection_result_feed": 0
+      }
+    },
+    "2": {
+      "bronze": {
+        "batch_record_feed": 53,
+        "change_control_feed": 69,
+        "corrective_action_feed": 134,
+        "deviation_event_feed": 311,
+        "inspection_result_feed": 1807
+      },
+      "gold_change_control_cycle_time": {
+        "avg_submit_to_approve_days": 18.35,
+        "avg_submit_to_close_days": 43.95,
+        "open": 16,
+        "rows": 58
+      },
+      "gold_deviation_lifecycle": {
+        "open": 38,
+        "overdue": 25,
+        "rows": 119,
+        "total_actions": 111,
+        "with_open_actions": 5
+      },
+      "gold_inspection_quality": {
+        "oos_results": 24,
+        "pass_rate_pct": 98.67,
+        "rows": 1126,
+        "total_results": 1803
+      },
+      "gold_lot_release_readiness": {
+        "AT_RISK": 20,
+        "BLOCKED": 7,
+        "READY_FOR_QA_REVIEW": 26,
+        "rows": 53
+      },
+      "gold_oos_events": {
+        "rows": 24
+      },
+      "orphan_action_cases": 1,
+      "silver_clean": {
+        "batch_record_feed": 53,
+        "change_control_feed": 67,
+        "corrective_action_feed": 133,
+        "deviation_event_feed": 307,
+        "inspection_result_feed": 1803
+      },
+      "silver_corrective_action_dedup_rows": 112,
+      "silver_quarantine": {
+        "change_control_feed": 2,
+        "corrective_action_feed": 1,
+        "deviation_event_feed": 4,
+        "inspection_result_feed": 4
+      }
+    },
+    "3": {
+      "bronze": {
+        "batch_record_feed": 63,
+        "change_control_feed": 79,
+        "corrective_action_feed": 158,
+        "deviation_event_feed": 321,
+        "inspection_result_feed": 1985
+      },
+      "gold_change_control_cycle_time": {
+        "avg_submit_to_approve_days": 18.23,
+        "avg_submit_to_close_days": 44.07,
+        "open": 16,
+        "rows": 60
+      },
+      "gold_deviation_lifecycle": {
+        "open": 36,
+        "overdue": 24,
+        "rows": 120,
+        "total_actions": 128,
+        "with_open_actions": 8
+      },
+      "gold_inspection_quality": {
+        "oos_results": 24,
+        "pass_rate_pct": 98.79,
+        "rows": 1227,
+        "total_results": 1980
+      },
+      "gold_lot_release_readiness": {
+        "AT_RISK": 23,
+        "BLOCKED": 9,
+        "READY_FOR_QA_REVIEW": 31,
+        "rows": 63
+      },
+      "gold_oos_events": {
+        "rows": 24
+      },
+      "orphan_action_cases": 1,
+      "silver_clean": {
+        "batch_record_feed": 63,
+        "change_control_feed": 76,
+        "corrective_action_feed": 156,
+        "deviation_event_feed": 316,
+        "inspection_result_feed": 1980
+      },
+      "silver_corrective_action_dedup_rows": 129,
+      "silver_quarantine": {
+        "change_control_feed": 3,
+        "corrective_action_feed": 2,
+        "deviation_event_feed": 5,
+        "inspection_result_feed": 5
+      }
+    }
+  },
+  "as_of_date": "2026-10-31",
+  "cutoffs": {
+    "1": "2026-10-12 23:59:59",
+    "2": "2026-10-22 23:59:59",
+    "3": "2026-10-31 23:59:59"
+  },
+  "seeded_test_cases": [
+    {
+      "batch": 2,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26A004-TITER_G_L-2"
+    },
+    {
+      "batch": 2,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26A004-SEC_MONOMER_PCT-2"
+    },
+    {
+      "batch": 2,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26A004-ENDOTOXIN_EU_ML-2"
+    },
+    {
+      "batch": 3,
+      "case": "late_arriving_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26B005-TITER_G_L-5"
+    },
+    {
+      "batch": 3,
+      "case": "late_arriving_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26B005-SEC_MONOMER_PCT-5"
+    },
+    {
+      "batch": 1,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26C012-TITER_G_L-2"
+    },
+    {
+      "batch": 1,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26C012-SEC_MONOMER_PCT-2"
+    },
+    {
+      "batch": 1,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26C012-ENDOTOXIN_EU_ML-2"
+    },
+    {
+      "batch": 1,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26B020-TITER_G_L-2"
+    },
+    {
+      "batch": 1,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26B020-SEC_MONOMER_PCT-2"
+    },
+    {
+      "batch": 1,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26B020-ENDOTOXIN_EU_ML-2"
+    },
+    {
+      "batch": 1,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26C027-TITER_G_L-2"
+    },
+    {
+      "batch": 1,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26C027-SEC_MONOMER_PCT-2"
+    },
+    {
+      "batch": 1,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26C027-ENDOTOXIN_EU_ML-2"
+    },
+    {
+      "batch": 1,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26C039-TITER_G_L-2"
+    },
+    {
+      "batch": 2,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26C039-SEC_MONOMER_PCT-2"
+    },
+    {
+      "batch": 1,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26C039-ENDOTOXIN_EU_ML-2"
+    },
+    {
+      "batch": 1,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26C045-TITER_G_L-2"
+    },
+    {
+      "batch": 1,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26C045-SEC_MONOMER_PCT-2"
+    },
+    {
+      "batch": 1,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26C045-ENDOTOXIN_EU_ML-2"
+    },
+    {
+      "batch": 1,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26A058-TITER_G_L-2"
+    },
+    {
+      "batch": 1,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26A058-SEC_MONOMER_PCT-2"
+    },
+    {
+      "batch": 1,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26A058-ENDOTOXIN_EU_ML-2"
+    },
+    {
+      "batch": 1,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26B062-TITER_G_L-2"
+    },
+    {
+      "batch": 1,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26B062-SEC_MONOMER_PCT-2"
+    },
+    {
+      "batch": 1,
+      "case": "out_of_spec_result",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26B062-ENDOTOXIN_EU_ML-2"
+    },
+    {
+      "batch": 2,
+      "case": "non_numeric_value_rescued",
+      "feed": "inspection_result_feed",
+      "key": "SITE-B"
+    },
+    {
+      "batch": 2,
+      "case": "non_numeric_value_rescued",
+      "feed": "inspection_result_feed",
+      "key": "SITE-B"
+    },
+    {
+      "batch": 2,
+      "case": "impossible_negative_value",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26C009-TITER_G_L-6"
+    },
+    {
+      "batch": 2,
+      "case": "missing_required_lot_id",
+      "feed": "inspection_result_feed",
+      "key": "S-UNKNOWN-PH-1"
+    },
+    {
+      "batch": 3,
+      "case": "inverted_spec_limits",
+      "feed": "inspection_result_feed",
+      "key": "S-LT26A010-PH-6"
+    },
+    {
+      "batch": 2,
+      "case": "late_arriving_event",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0004"
+    },
+    {
+      "batch": 2,
+      "case": "late_arriving_event",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0004"
+    },
+    {
+      "batch": 2,
+      "case": "late_arriving_event",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0015"
+    },
+    {
+      "batch": 2,
+      "case": "late_arriving_event",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0015"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0018"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0019"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0021"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0025"
+    },
+    {
+      "batch": 2,
+      "case": "late_arriving_event",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0026"
+    },
+    {
+      "batch": 2,
+      "case": "late_arriving_event",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0026"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0027"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0034"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0037"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0039"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0041"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0044"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0045"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0046"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0049"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0053"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0053"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0055"
+    },
+    {
+      "batch": 2,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0057"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0061"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0068"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0070"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0071"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0077"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0079"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0087"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0092"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0093"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0094"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0099"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0099"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0100"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0101"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0103"
+    },
+    {
+      "batch": 2,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0108"
+    },
+    {
+      "batch": 2,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0112"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0118"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0119"
+    },
+    {
+      "batch": 1,
+      "case": "resolved_before_reported",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0005"
+    },
+    {
+      "batch": 2,
+      "case": "missing_required_site_code",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0017"
+    },
+    {
+      "batch": 2,
+      "case": "missing_required_site_code",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0029"
+    },
+    {
+      "batch": 2,
+      "case": "unknown_status_code",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0041"
+    },
+    {
+      "batch": 3,
+      "case": "invalid_optional_severity",
+      "feed": "deviation_event_feed",
+      "key": "DEV-2026-0053"
+    },
+    {
+      "batch": 2,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000011"
+    },
+    {
+      "batch": 2,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000012"
+    },
+    {
+      "batch": 3,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000012"
+    },
+    {
+      "batch": 2,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000013"
+    },
+    {
+      "batch": 3,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000013"
+    },
+    {
+      "batch": 2,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000023"
+    },
+    {
+      "batch": 2,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000041"
+    },
+    {
+      "batch": 2,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000057"
+    },
+    {
+      "batch": 2,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000059"
+    },
+    {
+      "batch": 2,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000061"
+    },
+    {
+      "batch": 2,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000062"
+    },
+    {
+      "batch": 2,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000080"
+    },
+    {
+      "batch": 3,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000087"
+    },
+    {
+      "batch": 3,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000088"
+    },
+    {
+      "batch": 2,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000092"
+    },
+    {
+      "batch": 2,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000115"
+    },
+    {
+      "batch": 2,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000116"
+    },
+    {
+      "batch": 2,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000118"
+    },
+    {
+      "batch": 3,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000120"
+    },
+    {
+      "batch": 2,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000121"
+    },
+    {
+      "batch": 2,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000122"
+    },
+    {
+      "batch": 2,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000123"
+    },
+    {
+      "batch": 2,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000124"
+    },
+    {
+      "batch": 3,
+      "case": "status_progression_snapshot",
+      "feed": "corrective_action_feed",
+      "key": "CA-000124"
+    },
+    {
+      "batch": 2,
+      "case": "duplicate_key_resend",
+      "feed": "corrective_action_feed",
+      "key": "CA-000007"
+    },
+    {
+      "batch": 2,
+      "case": "duplicate_key_resend",
+      "feed": "corrective_action_feed",
+      "key": "CA-000015"
+    },
+    {
+      "batch": 2,
+      "case": "duplicate_key_resend",
+      "feed": "corrective_action_feed",
+      "key": "CA-000030"
+    },
+    {
+      "batch": 2,
+      "case": "orphan_action_no_parent_case",
+      "feed": "corrective_action_feed",
+      "key": "CA-999001"
+    },
+    {
+      "batch": 2,
+      "case": "missing_required_action_id",
+      "feed": "corrective_action_feed",
+      "key": ""
+    },
+    {
+      "batch": 3,
+      "case": "completed_before_created",
+      "feed": "corrective_action_feed",
+      "key": "CA-999002"
+    },
+    {
+      "batch": 3,
+      "case": "messy_status_normalized",
+      "feed": "change_control_feed",
+      "key": "CC-2026-003"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "change_control_feed",
+      "key": "CC-2026-018"
+    },
+    {
+      "batch": 2,
+      "case": "messy_status_normalized",
+      "feed": "change_control_feed",
+      "key": "CC-2026-018"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "change_control_feed",
+      "key": "CC-2026-029"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "change_control_feed",
+      "key": "CC-2026-031"
+    },
+    {
+      "batch": 3,
+      "case": "messy_status_normalized",
+      "feed": "change_control_feed",
+      "key": "CC-2026-034"
+    },
+    {
+      "batch": 2,
+      "case": "messy_status_normalized",
+      "feed": "change_control_feed",
+      "key": "CC-2026-035"
+    },
+    {
+      "batch": 2,
+      "case": "messy_status_normalized",
+      "feed": "change_control_feed",
+      "key": "CC-2026-040"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "change_control_feed",
+      "key": "CC-2026-050"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "change_control_feed",
+      "key": "CC-2026-055"
+    },
+    {
+      "batch": 1,
+      "case": "messy_status_normalized",
+      "feed": "change_control_feed",
+      "key": "CC-2026-056"
+    },
+    {
+      "batch": 2,
+      "case": "milestone_out_of_order",
+      "feed": "change_control_feed",
+      "key": "CC-2026-901"
+    },
+    {
+      "batch": 2,
+      "case": "missing_required_site_code",
+      "feed": "change_control_feed",
+      "key": "CC-2026-902"
+    },
+    {
+      "batch": 3,
+      "case": "unknown_workflow_status",
+      "feed": "change_control_feed",
+      "key": "CC-2026-903"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+-- ============================================================================
+-- OPTIONAL | LAB 05 | SILVER | corrective actions
+--   Practice copy. The running version is starter/silver/silver_corrective_action.sql (prebuilt).
+--   To try it: comment out the prebuilt file, copy this one over it, uncomment, fill each <FILL-IN>.
+--   1) Turn each rule in dq_issues into an EXPECT. 2) Fill the AUTO CDC key and the SCD type.
+-- ============================================================================
+-- -- ============================================================================
+-- -- SILVER | corrective actions
+-- -- The feed re-sends an action every time its status changes (snapshots).
+-- --   silver_corrective_action_event : every valid snapshot   (streaming table)
+-- --   silver_corrective_action       : latest snapshot per id (AUTO CDC, SCD type 1)
+-- -- ============================================================================
+--
+-- CREATE TEMPORARY VIEW corrective_action_prepared AS
+-- WITH typed AS (            -- Bronze is all STRING: cast here. try_* gives NULL, never an error
+--   SELECT * EXCEPT (created_at, completed_at),
+--     try_to_timestamp(created_at, 'yyyy-MM-dd HH:mm:ss') AS created_at,
+--     try_to_timestamp(completed_at, 'yyyy-MM-dd HH:mm:ss') AS completed_at
+--   FROM STREAM(bronze_corrective_action)
+-- )
+-- SELECT
+--   source_action_id,
+--   source_case_id,
+--   action_code,
+--   upper(regexp_replace(trim(action_status), '[ -]+', '_')) AS action_status,
+--   assigned_group,
+--   created_at,
+--   completed_at,
+--   source_file,
+--   ingested_at,
+--   filter(array(
+--     CASE WHEN source_action_id IS NULL THEN 'missing source_action_id' END,
+--     CASE WHEN source_case_id IS NULL   THEN 'missing source_case_id' END,
+--     CASE WHEN created_at IS NULL       THEN 'missing created_at' END,
+--     CASE WHEN upper(regexp_replace(trim(action_status), '[ -]+', '_'))
+--               NOT IN ('OPEN','IN_PROGRESS','COMPLETED','CANCELLED')
+--               OR action_status IS NULL THEN 'unknown action_status' END,
+--     CASE WHEN completed_at < created_at THEN 'completed_at before created_at' END
+--   ), x -> x IS NOT NULL) AS dq_issues
+-- FROM typed;
+--
+-- CREATE OR REFRESH STREAMING TABLE silver_corrective_action_event (
+--   CONSTRAINT has_action_id  EXPECT (source_action_id IS NOT NULL) ON VIOLATION DROP ROW,
+--   CONSTRAINT has_case_id    EXPECT (source_case_id IS NOT NULL)   ON VIOLATION DROP ROW,
+--   CONSTRAINT has_created_at EXPECT (created_at IS NOT NULL)       ON VIOLATION DROP ROW,
+--   CONSTRAINT known_status   EXPECT (<FILL-IN>) ON VIOLATION DROP ROW,
+--   CONSTRAINT completed_after_created EXPECT (completed_at IS NULL OR completed_at >= created_at)      ON VIOLATION DROP ROW
+-- )
+-- COMMENT "Every valid corrective-action snapshot. Grain: one row per action per file."
+-- TBLPROPERTIES ('quality' = 'silver')
+-- AS SELECT * EXCEPT (dq_issues) FROM STREAM(corrective_action_prepared);
+--
+-- CREATE OR REFRESH STREAMING TABLE silver_corrective_action_quarantine
+-- COMMENT "Corrective-action rows that failed at least one rule, with the reasons."
+-- TBLPROPERTIES ('quality' = 'quarantine')
+-- AS SELECT *, array_join(dq_issues, '; ') AS quarantine_reason
+-- FROM STREAM(corrective_action_prepared)
+-- WHERE size(dq_issues) > 0;
+--
+-- -- Latest state per action with AUTO CDC (SCD type 1): the platform keeps one row per key and applies
+-- -- each new snapshot in sequence order -- no hand-written dedupe, and late or re-sent rows are handled.
+-- -- The feed has no source timestamp, so the sequence is (file, status rank): latest file wins, and inside
+-- -- one file the most advanced status wins. With a real source updated_at: SEQUENCE BY source_updated_at.
+-- CREATE TEMPORARY VIEW corrective_action_changes AS
+-- SELECT *,
+--        CASE action_status WHEN 'OPEN' THEN 1 WHEN 'IN_PROGRESS' THEN 2 ELSE 3 END AS status_rank
+-- FROM STREAM(silver_corrective_action_event);
+--
+-- CREATE OR REFRESH STREAMING TABLE silver_corrective_action
+-- COMMENT "Current state of each corrective action, maintained by AUTO CDC (SCD type 1). Grain: one row per source_action_id."
+-- TBLPROPERTIES ('quality' = 'silver');
+--
+-- CREATE FLOW corrective_action_current AS AUTO CDC INTO silver_corrective_action
+-- FROM STREAM(corrective_action_changes)
+-- KEYS (<FILL-IN: the business key>)
+-- SEQUENCE BY STRUCT(source_file, status_rank)
+-- COLUMNS * EXCEPT (status_rank)
+-- STORED AS SCD TYPE <FILL-IN: 1 = latest only, 2 = history>;

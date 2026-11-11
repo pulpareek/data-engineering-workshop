@@ -1,0 +1,35 @@
+-- ============================================================================
+-- LAB 03 | BRONZE | bronze_inspection_result
+-- Goal   : ingest landing/inspection_result_feed incrementally with Auto Loader.
+-- Recipe : copy the pattern from bronze_deviation_event.sql, then change ONLY:
+--            1) the table name         -> bronze_inspection_result
+--            2) the folder             -> :landing_root || '/inspection_result_feed'
+--            3) the schema (contract)   -> one 'name STRING' per column (Bronze keeps
+--                                          values as sent; Silver casts them):
+--                 source_sample_id STRING
+--                 lot_id STRING
+--                 site_code STRING
+--                 test_code STRING
+--                 measured_value STRING
+--                 lower_limit STRING
+--                 upper_limit STRING
+--                 measured_at STRING
+-- Then    : remove the leading '-- ' from every line below and replace each <FILL-IN>.
+-- Check   : row count after batch_01 is in the Lab 03 checkpoint.
+-- ============================================================================
+
+-- CREATE OR REFRESH STREAMING TABLE <FILL-IN>
+-- COMMENT "Raw QC inspection results from the LIMS feed (synthetic)."
+-- TBLPROPERTIES ('quality' = 'bronze', 'pipelines.reset.allowed' = 'false')
+-- AS SELECT
+--   *,
+--   _metadata.file_path              AS source_file,
+--   _metadata.file_modification_time AS source_file_modified_at,
+--   current_timestamp()              AS ingested_at
+-- FROM STREAM read_files(
+--   :landing_root || '<FILL-IN: /folder name>',   -- pipeline parameter + the feed folder
+--   format            => 'csv',
+--   header            => true,
+--   schema            => '<FILL-IN>',   -- the Bronze data contract
+--   rescuedDataColumn => '_rescued_data'   -- anything outside the contract lands here
+-- );

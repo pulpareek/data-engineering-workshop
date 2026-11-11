@@ -1,0 +1,31 @@
+-- ============================================================================
+-- OPTIONAL | LAB 03 | BRONZE | bronze_corrective_action
+-- Practice copy. The running version is starter/bronze/bronze_corrective_action.sql (prebuilt).
+-- To try it: comment out the prebuilt file, copy this one over it, uncomment, fill each <FILL-IN>.
+--   1) the table name         -> bronze_corrective_action
+--   2) the folder             -> :landing_root || '/corrective_action_feed'
+--   3) the schema (contract)   -> one 'name STRING' per column (Silver casts):
+--        source_action_id STRING
+--        source_case_id STRING
+--        action_code STRING
+--        action_status STRING
+--        assigned_group STRING
+--        created_at STRING
+--        completed_at STRING
+-- ============================================================================
+
+-- CREATE OR REFRESH STREAMING TABLE <FILL-IN>
+-- COMMENT "Raw corrective/preventive action snapshots from the QMS feed (synthetic)."
+-- TBLPROPERTIES ('quality' = 'bronze', 'pipelines.reset.allowed' = 'false')
+-- AS SELECT
+--   *,
+--   _metadata.file_path              AS source_file,
+--   _metadata.file_modification_time AS source_file_modified_at,
+--   current_timestamp()              AS ingested_at
+-- FROM STREAM read_files(
+--   :landing_root || '<FILL-IN: /folder name>',   -- pipeline parameter + the feed folder
+--   format            => 'csv',
+--   header            => true,
+--   schema            => '<FILL-IN>',   -- the Bronze data contract
+--   rescuedDataColumn => '_rescued_data'   -- anything outside the contract lands here
+-- );

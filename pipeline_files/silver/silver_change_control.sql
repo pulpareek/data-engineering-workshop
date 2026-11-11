@@ -1,0 +1,78 @@
+-- ============================================================================
+-- LAB 05 | SILVER | change controls (your second Silver table)
+--   1) Uncomment the whole file (select all, Cmd/Ctrl + /).
+--   2) Turn each rule in dq_issues into an EXPECT. Milestones may be NULL (not reached yet):
+--      write NULL-tolerant rules, e.g. (approved_at IS NULL OR approved_at >= submitted_at).
+--   3) Then uncomment gold/gold_change_control_cycle_time.sql (prebuilt) and run.
+-- ============================================================================
+-- -- ============================================================================
+-- -- SILVER | change controls
+-- -- Grain  : one row per valid workflow snapshot (a change re-sends as it moves)
+-- -- Teaches: map messy source states to one vocabulary + milestone ordering.
+-- -- ============================================================================
+--
+-- CREATE TEMPORARY VIEW change_control_prepared AS
+-- WITH typed AS (            -- Bronze is all STRING: cast here. try_* gives NULL, never an error
+--   SELECT * EXCEPT (submitted_at, approved_at, effective_at, closed_at),
+--     try_to_timestamp(submitted_at, 'yyyy-MM-dd HH:mm:ss') AS submitted_at,
+--     try_to_timestamp(approved_at, 'yyyy-MM-dd HH:mm:ss') AS approved_at,
+--     try_to_timestamp(effective_at, 'yyyy-MM-dd HH:mm:ss') AS effective_at,
+--     try_to_timestamp(closed_at, 'yyyy-MM-dd HH:mm:ss') AS closed_at
+--   FROM STREAM(bronze_change_control)
+-- ),
+-- mapped AS (
+--   SELECT
+--     *,
+--     CASE upper(trim(workflow_status))
+--       WHEN 'SUBMITTED' THEN 'SUBMITTED'  WHEN 'SUBMIT' THEN 'SUBMITTED'
+--       WHEN 'APPROVED'  THEN 'APPROVED'   WHEN 'APPR'   THEN 'APPROVED'
+--       WHEN 'IMPLEMENTED' THEN 'IMPLEMENTED' WHEN 'IMPL' THEN 'IMPLEMENTED'
+--       WHEN 'CLOSED'    THEN 'CLOSED'
+--       WHEN 'REJECTED'  THEN 'REJECTED'
+--     END AS workflow_status_std
+--   FROM typed
+-- )
+-- SELECT
+--   source_change_id,
+--   site_code,
+--   product_code,
+--   change_type,
+--   workflow_status_std AS workflow_status,
+--   workflow_status     AS workflow_status_raw,
+--   submitted_at,
+--   approved_at,
+--   effective_at,
+--   closed_at,
+--   source_file,
+--   ingested_at,
+--   filter(array(
+--     CASE WHEN source_change_id IS NULL     THEN 'missing source_change_id' END,
+--     CASE WHEN site_code IS NULL            THEN 'missing site_code' END,
+--     CASE WHEN submitted_at IS NULL         THEN 'missing submitted_at' END,
+--     CASE WHEN workflow_status_std IS NULL  THEN 'unknown workflow_status' END,
+--     CASE WHEN approved_at  < submitted_at  THEN 'approved_at before submitted_at' END,
+--     CASE WHEN effective_at < approved_at   THEN 'effective_at before approved_at' END,
+--     CASE WHEN closed_at    < submitted_at  THEN 'closed_at before submitted_at' END
+--   ), x -> x IS NOT NULL) AS dq_issues
+-- FROM mapped;
+--
+-- CREATE OR REFRESH STREAMING TABLE silver_change_control (
+--   CONSTRAINT has_change_id    EXPECT (source_change_id IS NOT NULL) ON VIOLATION DROP ROW,
+--   CONSTRAINT has_site_code    EXPECT (<FILL-IN>)        ON VIOLATION DROP ROW,
+--   CONSTRAINT has_submitted_at EXPECT (<FILL-IN>)     ON VIOLATION DROP ROW,
+--   CONSTRAINT known_status     EXPECT (<FILL-IN>)  ON VIOLATION DROP ROW,
+--   -- Milestones may be missing (not reached yet) but never out of order.
+--   CONSTRAINT approved_after_submitted  EXPECT (<FILL-IN>)  ON VIOLATION DROP ROW,
+--   CONSTRAINT effective_after_approved  EXPECT (<FILL-IN>) ON VIOLATION DROP ROW,
+--   CONSTRAINT closed_after_submitted    EXPECT (<FILL-IN>)      ON VIOLATION DROP ROW
+-- )
+-- COMMENT "Validated change-control snapshots. Grain: one row per change per file."
+-- TBLPROPERTIES ('quality' = 'silver')
+-- AS SELECT * EXCEPT (dq_issues) FROM STREAM(change_control_prepared);
+--
+-- CREATE OR REFRESH STREAMING TABLE silver_change_control_quarantine
+-- COMMENT "Change-control rows that failed at least one rule, with the reasons."
+-- TBLPROPERTIES ('quality' = 'quarantine')
+-- AS SELECT *, array_join(dq_issues, '; ') AS quarantine_reason
+-- FROM STREAM(change_control_prepared)
+-- WHERE size(dq_issues) > 0;

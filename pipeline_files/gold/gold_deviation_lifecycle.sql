@@ -1,0 +1,63 @@
+-- ============================================================================
+-- PREBUILT: finished and running. Read it, do not edit it.
+-- Today you build the QC-results feed; this feed shows the same patterns, done.
+-- ============================================================================
+-- ============================================================================
+-- GOLD | deviation lifecycle  (materialized view)
+-- Grain : one row per deviation case
+-- Why MV: "current status" needs every event for a case, and late events can
+--         arrive for old cases -> the answer must be recomputed, not appended.
+-- Fan-out guard: actions are aggregated to one row per case BEFORE the join.
+-- ============================================================================
+CREATE OR REFRESH MATERIALIZED VIEW gold_deviation_lifecycle
+COMMENT "Current lifecycle of each deviation with its corrective-action summary. Grain: one row per case. Synthetic training data, not a quality decision."
+TBLPROPERTIES ('quality' = 'gold')
+AS
+WITH latest_event AS (          -- latest status per case, by source time (not arrival time)
+  SELECT *
+  FROM silver_deviation_event
+  QUALIFY row_number() OVER (PARTITION BY source_case_id ORDER BY source_updated_at DESC) = 1
+),
+case_facts AS (
+  SELECT
+    source_case_id,
+    min(reported_at)                                               AS reported_at,
+    max_by(severity, source_updated_at) FILTER (WHERE severity IS NOT NULL) AS severity,
+    count(*)                                                       AS event_count
+  FROM silver_deviation_event
+  GROUP BY source_case_id
+),
+action_summary AS (             -- 1 row per case: no fan-out when joined
+  SELECT
+    source_case_id,
+    count(*)                                                AS action_count,
+    count_if(action_status IN ('OPEN', 'IN_PROGRESS'))      AS open_action_count
+  FROM silver_corrective_action
+  GROUP BY source_case_id
+)
+SELECT
+  e.source_case_id,
+  e.site_code,
+  e.lot_id,
+  e.event_code,
+  e.status_code                                             AS current_status,
+  f.severity,
+  f.reported_at,
+  e.target_due_at,
+  e.resolved_at,
+  e.status_code NOT IN ('CLOSED', 'CANCELLED')              AS is_open,
+  e.status_code NOT IN ('CLOSED', 'CANCELLED')
+    AND to_date(:as_of_date) > to_date(e.target_due_at)      AS is_overdue,
+  datediff(
+    CASE WHEN e.status_code IN ('CLOSED', 'CANCELLED') AND e.resolved_at IS NOT NULL
+         THEN to_date(e.resolved_at) ELSE to_date(:as_of_date) END,
+    to_date(f.reported_at))                                 AS age_days,
+  f.event_count,
+  coalesce(a.action_count, 0)                               AS action_count,
+  coalesce(a.open_action_count, 0)                          AS open_action_count,
+  e.description,
+  e.source_file                                             AS latest_source_file,
+  to_date(:as_of_date)                                       AS as_of_date
+FROM latest_event e
+JOIN case_facts f USING (source_case_id)
+LEFT JOIN action_summary a USING (source_case_id);

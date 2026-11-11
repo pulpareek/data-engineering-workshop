@@ -1,0 +1,43 @@
+-- ============================================================================
+-- LAB 07 | DATA-QUALITY CHECKS
+--   Uncomment once your QC-results Silver file runs. The QA gate depends on dq_reconciliation.
+-- ============================================================================
+-- -- ============================================================================
+-- -- DATA-QUALITY CHECKS (every target) | WARN only: visible, never blocking
+-- -- Cross-table rules a single-row expectation cannot express.
+-- -- ============================================================================
+-- CREATE OR REFRESH MATERIALIZED VIEW dq_reconciliation (
+--   CONSTRAINT no_rows_lost EXPECT (bronze_rows = clean_rows + quarantine_rows)
+-- )
+-- COMMENT "Zero-data-loss check per feed: bronze = clean + quarantine."
+-- TBLPROPERTIES ('quality' = 'dq')
+-- AS
+-- SELECT 'deviation_event' AS feed,
+--        (SELECT count(*) FROM bronze_deviation_event)              AS bronze_rows,
+--        (SELECT count(*) FROM silver_deviation_event)              AS clean_rows,
+--        (SELECT count(*) FROM silver_deviation_event_quarantine)   AS quarantine_rows
+-- UNION ALL
+-- SELECT 'corrective_action',
+--        (SELECT count(*) FROM bronze_corrective_action),
+--        (SELECT count(*) FROM silver_corrective_action_event),
+--        (SELECT count(*) FROM silver_corrective_action_quarantine)
+-- UNION ALL
+-- SELECT 'change_control',
+--        (SELECT count(*) FROM bronze_change_control),
+--        (SELECT count(*) FROM silver_change_control),
+--        (SELECT count(*) FROM silver_change_control_quarantine)
+-- UNION ALL
+-- SELECT 'inspection_result',
+--        (SELECT count(*) FROM bronze_inspection_result),
+--        (SELECT count(*) FROM silver_inspection_result),
+--        (SELECT count(*) FROM silver_inspection_result_quarantine);
+--
+-- CREATE OR REFRESH MATERIALIZED VIEW dq_orphan_actions (
+--   CONSTRAINT action_has_parent_case EXPECT (parent_case_found)
+-- )
+-- COMMENT "Corrective actions whose deviation case is unknown (referential integrity)."
+-- TBLPROPERTIES ('quality' = 'dq')
+-- AS SELECT a.source_action_id, a.source_case_id,
+--           d.source_case_id IS NOT NULL AS parent_case_found
+-- FROM silver_corrective_action a
+-- LEFT JOIN (SELECT DISTINCT source_case_id FROM silver_deviation_event) d USING (source_case_id);

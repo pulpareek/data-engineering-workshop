@@ -1,0 +1,11 @@
+source_case_id,site_code,lot_id,event_code,status_code,reported_at,target_due_at,resolved_at,source_updated_at,description,severity
+DEV-2026-0006,SITE-C,LT26C054,DEV-LAB,PENDING_CAPA,2026-10-12 00:39:02,2026-11-11 00:39:02,,2026-10-24 04:39:02,QC sample handling deviation; aliquot held 49 minutes before testing,CRITICAL
+DEV-2026-0038,SITE-A,LT26A016,DEV-DOC,PENDING_CAPA,2026-10-14 18:21:16,2026-11-13 18:21:16,,2026-10-26 20:21:16,Batch record entry missing second-person verification at harvest,MINOR
+DEV-2026-0054,SITE-C,,DEV-DOC,OPEN,2026-10-26 17:04:21,2026-11-25 17:04:21,,2026-10-26 17:04:21,Batch record entry missing second-person verification at UF/DF,MINOR
+DEV-2026-0069,SITE-A,LT26A052,DEV-EQP,IN_INVESTIGATION,2026-10-08 18:35:39,2026-11-07 18:35:39,,2026-10-24 13:35:39,Equipment alarm during harvest; CENTRIFUGE-4 paused for 80 minutes,MINOR
+DEV-2026-0069,SITE-A,LT26A052,DEV-EQP,PENDING_CAPA,2026-10-08 18:35:39,2026-11-07 18:35:39,,2026-10-28 21:35:39,Equipment alarm during harvest; CENTRIFUGE-4 paused for 80 minutes,MINOR
+DEV-2026-0083,SITE-B,LT26B044,DEV-ENV,CLOSED,2026-10-05 23:49:52,2026-11-04 23:49:52,2026-10-30 14:49:52,2026-10-30 14:49:52,Environmental monitoring excursion in Grade B area near UF/DF,MINOR
+DEV-2026-0088,SITE-B,,DEV-LAB,CLOSED,2026-09-21 16:19:50,2026-10-21 16:19:50,2026-10-26 03:19:50,2026-10-26 03:19:50,QC sample handling deviation; aliquot held 20 minutes before testing,MINOR
+DEV-2026-0097,SITE-A,,DEV-DOC,PENDING_CAPA,2026-09-29 11:27:18,2026-10-29 11:27:18,,2026-10-26 05:27:18,Batch record entry missing second-person verification at UF/DF,MAJOR
+DEV-2026-0112,SITE-A,LT26A049,DEV-DOC,CLOSED,2026-10-09 11:56:38,2026-11-08 11:56:38,2026-10-25 16:56:38,2026-10-25 16:56:38,Batch record entry missing second-person verification at seed train,MINOR
+DEV-2026-0053,SITE-A,,DEV-LAB,OPEN,2026-06-25 15:32:44,2026-07-25 15:32:44,,2026-10-26 08:00:00,QC sample handling deviation; aliquot held 87 minutes before testing,URGENT

@@ -1,0 +1,288 @@
+source_case_id,site_code,lot_id,event_code,status_code,reported_at,target_due_at,resolved_at,source_updated_at,description
+DEV-2026-0001,SITE-B,LT26B005,DEV-DOC,OPEN,2026-07-08 19:59:59,2026-08-07 19:59:59,,2026-07-08 19:59:59,Batch record entry missing second-person verification at harvest
+DEV-2026-0001,SITE-B,LT26B005,DEV-DOC,IN_INVESTIGATION,2026-07-08 19:59:59,2026-08-07 19:59:59,,2026-07-13 21:59:59,Batch record entry missing second-person verification at harvest
+DEV-2026-0001,SITE-B,LT26B005,DEV-DOC,PENDING_CAPA,2026-07-08 19:59:59,2026-08-07 19:59:59,,2026-07-18 15:59:59,Batch record entry missing second-person verification at harvest
+DEV-2026-0001,SITE-B,LT26B005,DEV-DOC,CLOSED,2026-07-08 19:59:59,2026-08-07 19:59:59,2026-07-20 20:59:59,2026-07-20 20:59:59,Batch record entry missing second-person verification at harvest
+DEV-2026-0002,SITE-C,,DEV-PROC,OPEN,2026-06-26 06:12:17,2026-07-26 06:12:17,,2026-06-26 06:12:17,Process parameter outside normal operating range at viral inactivation
+DEV-2026-0002,SITE-C,,DEV-PROC,IN_INVESTIGATION,2026-06-26 06:12:17,2026-07-26 06:12:17,,2026-07-04 01:12:17,Process parameter outside normal operating range at viral inactivation
+DEV-2026-0002,SITE-C,,DEV-PROC,PENDING_CAPA,2026-06-26 06:12:17,2026-07-26 06:12:17,,2026-07-22 16:12:17,Process parameter outside normal operating range at viral inactivation
+DEV-2026-0002,SITE-C,,DEV-PROC,CLOSED,2026-06-26 06:12:17,2026-07-26 06:12:17,2026-07-30 17:12:17,2026-07-30 17:12:17,Process parameter outside normal operating range at viral inactivation
+DEV-2026-0003,SITE-A,,DEV-PROC,OPEN,2026-09-19 04:12:45,2026-10-19 04:12:45,,2026-09-19 04:12:45,Process parameter outside normal operating range at harvest
+DEV-2026-0003,SITE-A,,DEV-PROC,CANCELLED,2026-09-19 04:12:45,2026-10-19 04:12:45,2026-09-29 09:12:45,2026-09-29 09:12:45,Process parameter outside normal operating range at harvest
+DEV-2026-0005,SITE-C,LT26C054,DEV-EQP,OPEN,2026-08-08 20:12:58,2026-09-07 20:12:58,,2026-08-08 20:12:58,Equipment alarm during bulk fill; BR-2000-03 paused for 66 minutes
+DEV-2026-0005,SITE-C,LT26C054,DEV-EQP,IN_INVESTIGATION,2026-08-08 20:12:58,2026-09-07 20:12:58,,2026-08-19 16:12:58,Equipment alarm during bulk fill; BR-2000-03 paused for 66 minutes
+DEV-2026-0005,SITE-C,LT26C054,DEV-EQP,CLOSED,2026-08-08 20:12:58,2026-09-07 20:12:58,2026-09-05 04:12:58,2026-09-05 04:12:58,Equipment alarm during bulk fill; BR-2000-03 paused for 66 minutes
+DEV-2026-0006,SITE-C,LT26C054,DEV-LAB,OPEN,2026-10-12 00:39:02,2026-11-11 00:39:02,,2026-10-12 00:39:02,QC sample handling deviation; aliquot held 49 minutes before testing
+DEV-2026-0007,SITE-C,LT26C042,DEV-DOC,OPEN,2026-07-17 17:22:05,2026-08-16 17:22:05,,2026-07-17 17:22:05,Batch record entry missing second-person verification at Protein A capture
+DEV-2026-0007,SITE-C,LT26C042,DEV-DOC,IN_INVESTIGATION,2026-07-17 17:22:05,2026-08-16 17:22:05,,2026-07-20 23:22:05,Batch record entry missing second-person verification at Protein A capture
+DEV-2026-0007,SITE-C,LT26C042,DEV-DOC,CLOSED,2026-07-17 17:22:05,2026-08-16 17:22:05,2026-07-31 02:22:05,2026-07-31 02:22:05,Batch record entry missing second-person verification at Protein A capture
+DEV-2026-0008,SITE-B,LT26B023,DEV-PROC,OPEN,2026-09-21 05:59:17,2026-10-21 05:59:17,,2026-09-21 05:59:17,Process parameter outside normal operating range at production bioreactor
+DEV-2026-0008,SITE-B,LT26B023,DEV-PROC,IN_INVESTIGATION,2026-09-21 05:59:17,2026-10-21 05:59:17,,2026-10-07 17:59:17,Process parameter outside normal operating range at production bioreactor
+DEV-2026-0009,SITE-B,LT26B014,DEV-LAB,OPEN,2026-08-17 19:37:32,2026-09-16 19:37:32,,2026-08-17 19:37:32,QC sample handling deviation; aliquot held 23 minutes before testing
+DEV-2026-0009,SITE-B,LT26B014,DEV-LAB,CANCELLED,2026-08-17 19:37:32,2026-09-16 19:37:32,2026-09-03 22:37:32,2026-09-03 22:37:32,QC sample handling deviation; aliquot held 23 minutes before testing
+DEV-2026-0010,SITE-B,,DEV-ENV,OPEN,2026-08-12 17:27:41,2026-09-11 17:27:41,,2026-08-12 17:27:41,Environmental monitoring excursion in Grade A area near seed train
+DEV-2026-0010,SITE-B,,DEV-ENV,IN_INVESTIGATION,2026-08-12 17:27:41,2026-09-11 17:27:41,,2026-08-24 11:27:41,Environmental monitoring excursion in Grade A area near seed train
+DEV-2026-0010,SITE-B,,DEV-ENV,CLOSED,2026-08-12 17:27:41,2026-09-11 17:27:41,2026-08-29 23:27:41,2026-08-29 23:27:41,Environmental monitoring excursion in Grade A area near seed train
+DEV-2026-0011,SITE-B,,DEV-LAB,OPEN,2026-06-14 16:08:21,2026-07-14 16:08:21,,2026-06-14 16:08:21,QC sample handling deviation; aliquot held 49 minutes before testing
+DEV-2026-0011,SITE-B,,DEV-LAB,CANCELLED,2026-06-14 16:08:21,2026-07-14 16:08:21,2026-06-25 03:08:21,2026-06-25 03:08:21,QC sample handling deviation; aliquot held 49 minutes before testing
+DEV-2026-0012,SITE-C,,DEV-ENV,OPEN,2026-06-23 06:33:55,2026-07-23 06:33:55,,2026-06-23 06:33:55,Environmental monitoring excursion in Grade A area near production bioreactor
+DEV-2026-0012,SITE-C,,DEV-ENV,IN_INVESTIGATION,2026-06-23 06:33:55,2026-07-23 06:33:55,,2026-07-10 00:33:55,Environmental monitoring excursion in Grade A area near production bioreactor
+DEV-2026-0012,SITE-C,,DEV-ENV,PENDING_CAPA,2026-06-23 06:33:55,2026-07-23 06:33:55,,2026-07-24 00:33:55,Environmental monitoring excursion in Grade A area near production bioreactor
+DEV-2026-0012,SITE-C,,DEV-ENV,CLOSED,2026-06-23 06:33:55,2026-07-23 06:33:55,2026-08-03 12:33:55,2026-08-03 12:33:55,Environmental monitoring excursion in Grade A area near production bioreactor
+DEV-2026-0014,SITE-C,LT26C018,DEV-ENV,OPEN,2026-08-06 07:48:26,2026-09-05 07:48:26,,2026-08-06 07:48:26,Environmental monitoring excursion in Grade D area near bulk fill
+DEV-2026-0014,SITE-C,LT26C018,DEV-ENV,CANCELLED,2026-08-06 07:48:26,2026-09-05 07:48:26,2026-08-15 16:48:26,2026-08-15 16:48:26,Environmental monitoring excursion in Grade D area near bulk fill
+DEV-2026-0016,SITE-A,,DEV-ENV,OPEN,2026-07-23 19:45:50,2026-08-22 19:45:50,,2026-07-23 19:45:50,Environmental monitoring excursion in Grade A area near viral inactivation
+DEV-2026-0016,SITE-A,,DEV-ENV,IN_INVESTIGATION,2026-07-23 19:45:50,2026-08-22 19:45:50,,2026-08-03 23:45:50,Environmental monitoring excursion in Grade A area near viral inactivation
+DEV-2026-0016,SITE-A,,DEV-ENV,PENDING_CAPA,2026-07-23 19:45:50,2026-08-22 19:45:50,,2026-08-17 09:45:50,Environmental monitoring excursion in Grade A area near viral inactivation
+DEV-2026-0016,SITE-A,,DEV-ENV,CLOSED,2026-07-23 19:45:50,2026-08-22 19:45:50,2026-08-26 09:45:50,2026-08-26 09:45:50,Environmental monitoring excursion in Grade A area near viral inactivation
+DEV-2026-0017,SITE-C,,DEV-DOC,OPEN,2026-09-15 19:19:26,2026-10-15 19:19:26,,2026-09-15 19:19:26,Batch record entry missing second-person verification at polishing chromatography
+DEV-2026-0017,SITE-C,,DEV-DOC,IN_INVESTIGATION,2026-09-15 19:19:26,2026-10-15 19:19:26,,2026-09-22 15:19:26,Batch record entry missing second-person verification at polishing chromatography
+DEV-2026-0018,SITE-C,LT26C030,DEV-LAB,OPEN,2026-08-22 22:49:17,2026-09-21 22:49:17,,2026-08-22 22:49:17,QC sample handling deviation; aliquot held 78 minutes before testing
+DEV-2026-0018,SITE-C,LT26C030,DEV-LAB,IN_INVESTIGATION,2026-08-22 22:49:17,2026-09-21 22:49:17,,2026-09-03 15:49:17,QC sample handling deviation; aliquot held 78 minutes before testing
+DEV-2026-0018,SITE-C,LT26C030,DEV-LAB,Pending_Capa,2026-08-22 22:49:17,2026-09-21 22:49:17,,2026-09-07 03:49:17,QC sample handling deviation; aliquot held 78 minutes before testing
+DEV-2026-0018,SITE-C,LT26C030,DEV-LAB,CLOSED,2026-08-22 22:49:17,2026-09-21 22:49:17,2026-09-12 22:49:17,2026-09-12 22:49:17,QC sample handling deviation; aliquot held 78 minutes before testing
+DEV-2026-0019,SITE-C,LT26C051,DEV-DOC,Open,2026-08-13 22:47:42,2026-09-12 22:47:42,,2026-08-13 22:47:42,Batch record entry missing second-person verification at harvest
+DEV-2026-0020,SITE-B,LT26B059,DEV-PROC,OPEN,2026-09-04 05:32:23,2026-10-04 05:32:23,,2026-09-04 05:32:23,Process parameter outside normal operating range at viral inactivation
+DEV-2026-0020,SITE-B,LT26B059,DEV-PROC,IN_INVESTIGATION,2026-09-04 05:32:23,2026-10-04 05:32:23,,2026-09-10 07:32:23,Process parameter outside normal operating range at viral inactivation
+DEV-2026-0020,SITE-B,LT26B059,DEV-PROC,CLOSED,2026-09-04 05:32:23,2026-10-04 05:32:23,2026-09-14 09:32:23,2026-09-14 09:32:23,Process parameter outside normal operating range at viral inactivation
+DEV-2026-0021,SITE-B,LT26B005,DEV-PROC,OPEN,2026-07-05 06:50:07,2026-08-04 06:50:07,,2026-07-05 06:50:07,Process parameter outside normal operating range at harvest
+DEV-2026-0021,SITE-B,LT26B005,DEV-PROC, IN_INVESTIGATION ,2026-07-05 06:50:07,2026-08-04 06:50:07,,2026-07-07 11:50:07,Process parameter outside normal operating range at harvest
+DEV-2026-0022,SITE-B,LT26B047,DEV-ENV,OPEN,2026-10-08 17:38:19,2026-11-07 17:38:19,,2026-10-08 17:38:19,Environmental monitoring excursion in Grade B area near harvest
+DEV-2026-0023,SITE-B,,DEV-LAB,OPEN,2026-06-10 00:40:04,2026-07-10 00:40:04,,2026-06-10 00:40:04,QC sample handling deviation; aliquot held 21 minutes before testing
+DEV-2026-0023,SITE-B,,DEV-LAB,IN_INVESTIGATION,2026-06-10 00:40:04,2026-07-10 00:40:04,,2026-06-13 10:40:04,QC sample handling deviation; aliquot held 21 minutes before testing
+DEV-2026-0023,SITE-B,,DEV-LAB,CLOSED,2026-06-10 00:40:04,2026-07-10 00:40:04,2026-06-18 22:40:04,2026-06-18 22:40:04,QC sample handling deviation; aliquot held 21 minutes before testing
+DEV-2026-0024,SITE-B,,DEV-PROC,OPEN,2026-06-13 05:37:27,2026-07-13 05:37:27,,2026-06-13 05:37:27,Process parameter outside normal operating range at bulk fill
+DEV-2026-0025,SITE-B,LT26B059,DEV-EQP,OPEN,2026-07-28 15:29:08,2026-08-27 15:29:08,,2026-07-28 15:29:08,Equipment alarm during Protein A capture; UFDF-02 paused for 51 minutes
+DEV-2026-0025,SITE-B,LT26B059,DEV-EQP,IN_INVESTIGATION,2026-07-28 15:29:08,2026-08-27 15:29:08,,2026-07-30 16:29:08,Equipment alarm during Protein A capture; UFDF-02 paused for 51 minutes
+DEV-2026-0025,SITE-B,LT26B059,DEV-EQP,PENDING_CAPA,2026-07-28 15:29:08,2026-08-27 15:29:08,,2026-08-01 17:29:08,Equipment alarm during Protein A capture; UFDF-02 paused for 51 minutes
+DEV-2026-0025,SITE-B,LT26B059,DEV-EQP,Closed,2026-07-28 15:29:08,2026-08-27 15:29:08,2026-08-15 06:29:08,2026-08-15 06:29:08,Equipment alarm during Protein A capture; UFDF-02 paused for 51 minutes
+DEV-2026-0027,SITE-C,,DEV-DOC,open,2026-10-06 13:06:30,2026-11-05 13:06:30,,2026-10-06 13:06:30,Batch record entry missing second-person verification at UF/DF
+DEV-2026-0027,SITE-C,,DEV-DOC,IN_INVESTIGATION,2026-10-06 13:06:30,2026-11-05 13:06:30,,2026-10-11 00:06:30,Batch record entry missing second-person verification at UF/DF
+DEV-2026-0028,SITE-B,LT26B020,DEV-LAB,OPEN,2026-09-04 19:56:58,2026-10-04 19:56:58,,2026-09-04 19:56:58,QC sample handling deviation; aliquot held 20 minutes before testing
+DEV-2026-0029,SITE-A,LT26A019,DEV-ENV,OPEN,2026-06-07 13:51:17,2026-07-07 13:51:17,,2026-06-07 13:51:17,Environmental monitoring excursion in Grade A area near bulk fill
+DEV-2026-0029,SITE-A,LT26A019,DEV-ENV,IN_INVESTIGATION,2026-06-07 13:51:17,2026-07-07 13:51:17,,2026-06-10 18:51:17,Environmental monitoring excursion in Grade A area near bulk fill
+DEV-2026-0030,SITE-B,LT26B029,DEV-DOC,OPEN,2026-07-02 19:49:25,2026-08-01 19:49:25,,2026-07-02 19:49:25,Batch record entry missing second-person verification at bulk fill
+DEV-2026-0030,SITE-B,LT26B029,DEV-DOC,IN_INVESTIGATION,2026-07-02 19:49:25,2026-08-01 19:49:25,,2026-07-13 20:49:25,Batch record entry missing second-person verification at bulk fill
+DEV-2026-0031,SITE-A,LT26A031,DEV-EQP,OPEN,2026-07-10 20:45:14,2026-08-09 20:45:14,,2026-07-10 20:45:14,Equipment alarm during Protein A capture; UFDF-02 paused for 88 minutes
+DEV-2026-0031,SITE-A,LT26A031,DEV-EQP,IN_INVESTIGATION,2026-07-10 20:45:14,2026-08-09 20:45:14,,2026-07-24 13:45:14,Equipment alarm during Protein A capture; UFDF-02 paused for 88 minutes
+DEV-2026-0031,SITE-A,LT26A031,DEV-EQP,CLOSED,2026-07-10 20:45:14,2026-08-09 20:45:14,2026-07-27 08:45:14,2026-07-27 08:45:14,Equipment alarm during Protein A capture; UFDF-02 paused for 88 minutes
+DEV-2026-0032,SITE-C,LT26C018,DEV-DOC,OPEN,2026-08-07 21:05:08,2026-09-06 21:05:08,,2026-08-07 21:05:08,Batch record entry missing second-person verification at UF/DF
+DEV-2026-0032,SITE-C,LT26C018,DEV-DOC,IN_INVESTIGATION,2026-08-07 21:05:08,2026-09-06 21:05:08,,2026-08-21 09:05:08,Batch record entry missing second-person verification at UF/DF
+DEV-2026-0032,SITE-C,LT26C018,DEV-DOC,PENDING_CAPA,2026-08-07 21:05:08,2026-09-06 21:05:08,,2026-09-05 22:05:08,Batch record entry missing second-person verification at UF/DF
+DEV-2026-0033,SITE-B,,DEV-DOC,OPEN,2026-07-28 09:51:52,2026-08-27 09:51:52,,2026-07-28 09:51:52,Batch record entry missing second-person verification at seed train
+DEV-2026-0034,SITE-C,LT26C018,DEV-EQP, OPEN ,2026-07-10 01:18:08,2026-08-09 01:18:08,,2026-07-10 01:18:08,Equipment alarm during bulk fill; BR-2000-03 paused for 70 minutes
+DEV-2026-0034,SITE-C,LT26C018,DEV-EQP,IN_INVESTIGATION,2026-07-10 01:18:08,2026-08-09 01:18:08,,2026-07-18 19:18:08,Equipment alarm during bulk fill; BR-2000-03 paused for 70 minutes
+DEV-2026-0035,SITE-B,,DEV-DOC,OPEN,2026-09-07 07:37:20,2026-10-07 07:37:20,,2026-09-07 07:37:20,Batch record entry missing second-person verification at polishing chromatography
+DEV-2026-0035,SITE-B,,DEV-DOC,CANCELLED,2026-09-07 07:37:20,2026-10-07 07:37:20,2026-09-09 21:37:20,2026-09-09 21:37:20,Batch record entry missing second-person verification at polishing chromatography
+DEV-2026-0036,SITE-C,,DEV-LAB,OPEN,2026-06-05 11:24:03,2026-07-05 11:24:03,,2026-06-05 11:24:03,QC sample handling deviation; aliquot held 63 minutes before testing
+DEV-2026-0036,SITE-C,,DEV-LAB,IN_INVESTIGATION,2026-06-05 11:24:03,2026-07-05 11:24:03,,2026-06-23 07:24:03,QC sample handling deviation; aliquot held 63 minutes before testing
+DEV-2026-0036,SITE-C,,DEV-LAB,PENDING_CAPA,2026-06-05 11:24:03,2026-07-05 11:24:03,,2026-07-10 22:24:03,QC sample handling deviation; aliquot held 63 minutes before testing
+DEV-2026-0036,SITE-C,,DEV-LAB,CLOSED,2026-06-05 11:24:03,2026-07-05 11:24:03,2026-07-19 12:24:03,2026-07-19 12:24:03,QC sample handling deviation; aliquot held 63 minutes before testing
+DEV-2026-0037,SITE-A,,DEV-LAB, OPEN ,2026-09-14 09:01:02,2026-10-14 09:01:02,,2026-09-14 09:01:02,QC sample handling deviation; aliquot held 75 minutes before testing
+DEV-2026-0037,SITE-A,,DEV-LAB,IN_INVESTIGATION,2026-09-14 09:01:02,2026-10-14 09:01:02,,2026-09-25 12:01:02,QC sample handling deviation; aliquot held 75 minutes before testing
+DEV-2026-0039,SITE-C,LT26C057,DEV-EQP,open,2026-09-15 17:18:32,2026-10-15 17:18:32,,2026-09-15 17:18:32,Equipment alarm during production bioreactor; CHR-SKID-07 paused for 32 minutes
+DEV-2026-0039,SITE-C,LT26C057,DEV-EQP,IN_INVESTIGATION,2026-09-15 17:18:32,2026-10-15 17:18:32,,2026-09-28 06:18:32,Equipment alarm during production bioreactor; CHR-SKID-07 paused for 32 minutes
+DEV-2026-0039,SITE-C,LT26C057,DEV-EQP,CLOSED,2026-09-15 17:18:32,2026-10-15 17:18:32,2026-10-03 19:18:32,2026-10-03 19:18:32,Equipment alarm during production bioreactor; CHR-SKID-07 paused for 32 minutes
+DEV-2026-0040,SITE-B,LT26B047,DEV-LAB,OPEN,2026-09-27 15:27:26,2026-10-27 15:27:26,,2026-09-27 15:27:26,QC sample handling deviation; aliquot held 29 minutes before testing
+DEV-2026-0041,SITE-C,,DEV-LAB, OPEN ,2026-06-25 04:47:48,2026-07-25 04:47:48,,2026-06-25 04:47:48,QC sample handling deviation; aliquot held 47 minutes before testing
+DEV-2026-0041,SITE-C,,DEV-LAB,IN_INVESTIGATION,2026-06-25 04:47:48,2026-07-25 04:47:48,,2026-07-06 21:47:48,QC sample handling deviation; aliquot held 47 minutes before testing
+DEV-2026-0041,SITE-C,,DEV-LAB,PENDING_CAPA,2026-06-25 04:47:48,2026-07-25 04:47:48,,2026-07-16 14:47:48,QC sample handling deviation; aliquot held 47 minutes before testing
+DEV-2026-0041,SITE-C,,DEV-LAB,CLOSED,2026-06-25 04:47:48,2026-07-25 04:47:48,2026-07-22 17:47:48,2026-07-22 17:47:48,QC sample handling deviation; aliquot held 47 minutes before testing
+DEV-2026-0043,SITE-C,,DEV-PROC,OPEN,2026-08-26 20:27:34,2026-09-25 20:27:34,,2026-08-26 20:27:34,Process parameter outside normal operating range at Protein A capture
+DEV-2026-0044,SITE-A,LT26A019,DEV-EQP,OPEN,2026-07-30 12:29:59,2026-08-29 12:29:59,,2026-07-30 12:29:59,Equipment alarm during production bioreactor; BR-2000-03 paused for 82 minutes
+DEV-2026-0044,SITE-A,LT26A019,DEV-EQP,in investigation,2026-07-30 12:29:59,2026-08-29 12:29:59,,2026-08-11 13:29:59,Equipment alarm during production bioreactor; BR-2000-03 paused for 82 minutes
+DEV-2026-0044,SITE-A,LT26A019,DEV-EQP,CLOSED,2026-07-30 12:29:59,2026-08-29 12:29:59,2026-08-25 21:29:59,2026-08-25 21:29:59,Equipment alarm during production bioreactor; BR-2000-03 paused for 82 minutes
+DEV-2026-0045,SITE-B,LT26B044,DEV-ENV,OPEN,2026-08-21 22:31:08,2026-09-20 22:31:08,,2026-08-21 22:31:08,Environmental monitoring excursion in Grade B area near viral inactivation
+DEV-2026-0045,SITE-B,LT26B044,DEV-ENV,In_Investigation,2026-08-21 22:31:08,2026-09-20 22:31:08,,2026-09-05 04:31:08,Environmental monitoring excursion in Grade B area near viral inactivation
+DEV-2026-0046,SITE-A,LT26A004,DEV-LAB,open,2026-07-16 17:35:26,2026-08-15 17:35:26,,2026-07-16 17:35:26,QC sample handling deviation; aliquot held 90 minutes before testing
+DEV-2026-0046,SITE-A,LT26A004,DEV-LAB,IN_INVESTIGATION,2026-07-16 17:35:26,2026-08-15 17:35:26,,2026-08-03 00:35:26,QC sample handling deviation; aliquot held 90 minutes before testing
+DEV-2026-0046,SITE-A,LT26A004,DEV-LAB,CLOSED,2026-07-16 17:35:26,2026-08-15 17:35:26,2026-08-06 07:35:26,2026-08-06 07:35:26,QC sample handling deviation; aliquot held 90 minutes before testing
+DEV-2026-0047,SITE-B,LT26B050,DEV-DOC,OPEN,2026-07-09 14:24:34,2026-08-08 14:24:34,,2026-07-09 14:24:34,Batch record entry missing second-person verification at bulk fill
+DEV-2026-0047,SITE-B,LT26B050,DEV-DOC,IN_INVESTIGATION,2026-07-09 14:24:34,2026-08-08 14:24:34,,2026-07-13 08:24:34,Batch record entry missing second-person verification at bulk fill
+DEV-2026-0047,SITE-B,LT26B050,DEV-DOC,CLOSED,2026-07-09 14:24:34,2026-08-08 14:24:34,2026-07-21 04:24:34,2026-07-21 04:24:34,Batch record entry missing second-person verification at bulk fill
+DEV-2026-0048,SITE-B,,DEV-EQP,OPEN,2026-08-07 16:23:08,2026-09-06 16:23:08,,2026-08-07 16:23:08,Equipment alarm during polishing chromatography; CHR-SKID-07 paused for 65 minutes
+DEV-2026-0048,SITE-B,,DEV-EQP,IN_INVESTIGATION,2026-08-07 16:23:08,2026-09-06 16:23:08,,2026-08-15 11:23:08,Equipment alarm during polishing chromatography; CHR-SKID-07 paused for 65 minutes
+DEV-2026-0048,SITE-B,,DEV-EQP,PENDING_CAPA,2026-08-07 16:23:08,2026-09-06 16:23:08,,2026-08-26 15:23:08,Equipment alarm during polishing chromatography; CHR-SKID-07 paused for 65 minutes
+DEV-2026-0048,SITE-B,,DEV-EQP,CLOSED,2026-08-07 16:23:08,2026-09-06 16:23:08,2026-09-06 17:23:08,2026-09-06 17:23:08,Equipment alarm during polishing chromatography; CHR-SKID-07 paused for 65 minutes
+DEV-2026-0049,SITE-A,LT26A058,DEV-ENV,OPEN,2026-09-21 06:53:45,2026-10-21 06:53:45,,2026-09-21 06:53:45,Environmental monitoring excursion in Grade A area near Protein A capture
+DEV-2026-0049,SITE-A,LT26A058,DEV-ENV,in investigation,2026-09-21 06:53:45,2026-10-21 06:53:45,,2026-10-01 21:53:45,Environmental monitoring excursion in Grade A area near Protein A capture
+DEV-2026-0050,SITE-C,LT26C015,DEV-DOC,OPEN,2026-08-03 22:03:30,2026-09-02 22:03:30,,2026-08-03 22:03:30,Batch record entry missing second-person verification at production bioreactor
+DEV-2026-0050,SITE-C,LT26C015,DEV-DOC,IN_INVESTIGATION,2026-08-03 22:03:30,2026-09-02 22:03:30,,2026-08-09 11:03:30,Batch record entry missing second-person verification at production bioreactor
+DEV-2026-0050,SITE-C,LT26C015,DEV-DOC,PENDING_CAPA,2026-08-03 22:03:30,2026-09-02 22:03:30,,2026-08-24 05:03:30,Batch record entry missing second-person verification at production bioreactor
+DEV-2026-0050,SITE-C,LT26C015,DEV-DOC,CLOSED,2026-08-03 22:03:30,2026-09-02 22:03:30,2026-09-03 01:03:30,2026-09-03 01:03:30,Batch record entry missing second-person verification at production bioreactor
+DEV-2026-0051,SITE-B,LT26B041,DEV-ENV,OPEN,2026-08-06 17:00:44,2026-09-05 17:00:44,,2026-08-06 17:00:44,Environmental monitoring excursion in Grade C area near Protein A capture
+DEV-2026-0051,SITE-B,LT26B041,DEV-ENV,CANCELLED,2026-08-06 17:00:44,2026-09-05 17:00:44,2026-08-11 23:00:44,2026-08-11 23:00:44,Environmental monitoring excursion in Grade C area near Protein A capture
+DEV-2026-0052,SITE-C,,DEV-LAB,OPEN,2026-06-29 02:21:30,2026-07-29 02:21:30,,2026-06-29 02:21:30,QC sample handling deviation; aliquot held 70 minutes before testing
+DEV-2026-0052,SITE-C,,DEV-LAB,CANCELLED,2026-06-29 02:21:30,2026-07-29 02:21:30,2026-07-09 18:21:30,2026-07-09 18:21:30,QC sample handling deviation; aliquot held 70 minutes before testing
+DEV-2026-0053,SITE-A,,DEV-LAB, OPEN ,2026-06-25 15:32:44,2026-07-25 15:32:44,,2026-06-25 15:32:44,QC sample handling deviation; aliquot held 87 minutes before testing
+DEV-2026-0053,SITE-A,,DEV-LAB,IN_INVESTIGATION,2026-06-25 15:32:44,2026-07-25 15:32:44,,2026-07-10 22:32:44,QC sample handling deviation; aliquot held 87 minutes before testing
+DEV-2026-0053,SITE-A,,DEV-LAB, CLOSED ,2026-06-25 15:32:44,2026-07-25 15:32:44,2026-07-16 06:32:44,2026-07-16 06:32:44,QC sample handling deviation; aliquot held 87 minutes before testing
+DEV-2026-0055,SITE-A,LT26A028,DEV-LAB,OPEN,2026-08-17 09:17:18,2026-09-16 09:17:18,,2026-08-17 09:17:18,QC sample handling deviation; aliquot held 18 minutes before testing
+DEV-2026-0055,SITE-A,LT26A028,DEV-LAB,IN_INVESTIGATION,2026-08-17 09:17:18,2026-09-16 09:17:18,,2026-08-22 01:17:18,QC sample handling deviation; aliquot held 18 minutes before testing
+DEV-2026-0055,SITE-A,LT26A028,DEV-LAB,PENDING_CAPA,2026-08-17 09:17:18,2026-09-16 09:17:18,,2026-09-06 14:17:18,QC sample handling deviation; aliquot held 18 minutes before testing
+DEV-2026-0055,SITE-A,LT26A028,DEV-LAB,closed,2026-08-17 09:17:18,2026-09-16 09:17:18,2026-09-12 02:17:18,2026-09-12 02:17:18,QC sample handling deviation; aliquot held 18 minutes before testing
+DEV-2026-0056,SITE-C,LT26C045,DEV-LAB,OPEN,2026-08-30 19:23:27,2026-09-29 19:23:27,,2026-08-30 19:23:27,QC sample handling deviation; aliquot held 51 minutes before testing
+DEV-2026-0056,SITE-C,LT26C045,DEV-LAB,IN_INVESTIGATION,2026-08-30 19:23:27,2026-09-29 19:23:27,,2026-09-04 23:23:27,QC sample handling deviation; aliquot held 51 minutes before testing
+DEV-2026-0056,SITE-C,LT26C045,DEV-LAB,PENDING_CAPA,2026-08-30 19:23:27,2026-09-29 19:23:27,,2026-09-22 04:23:27,QC sample handling deviation; aliquot held 51 minutes before testing
+DEV-2026-0056,SITE-C,LT26C045,DEV-LAB,CLOSED,2026-08-30 19:23:27,2026-09-29 19:23:27,2026-09-30 06:23:27,2026-09-30 06:23:27,QC sample handling deviation; aliquot held 51 minutes before testing
+DEV-2026-0057,SITE-A,,DEV-LAB,OPEN,2026-10-04 04:56:54,2026-11-03 04:56:54,,2026-10-04 04:56:54,QC sample handling deviation; aliquot held 57 minutes before testing
+DEV-2026-0058,SITE-C,LT26C027,DEV-LAB,OPEN,2026-09-18 19:56:31,2026-10-18 19:56:31,,2026-09-18 19:56:31,QC sample handling deviation; aliquot held 72 minutes before testing
+DEV-2026-0058,SITE-C,LT26C027,DEV-LAB,CANCELLED,2026-09-18 19:56:31,2026-10-18 19:56:31,2026-09-30 14:56:31,2026-09-30 14:56:31,QC sample handling deviation; aliquot held 72 minutes before testing
+DEV-2026-0059,SITE-C,LT26C015,DEV-ENV,OPEN,2026-07-01 10:23:47,2026-07-31 10:23:47,,2026-07-01 10:23:47,Environmental monitoring excursion in Grade B area near UF/DF
+DEV-2026-0059,SITE-C,LT26C015,DEV-ENV,IN_INVESTIGATION,2026-07-01 10:23:47,2026-07-31 10:23:47,,2026-07-14 03:23:47,Environmental monitoring excursion in Grade B area near UF/DF
+DEV-2026-0059,SITE-C,LT26C015,DEV-ENV,PENDING_CAPA,2026-07-01 10:23:47,2026-07-31 10:23:47,,2026-07-16 16:23:47,Environmental monitoring excursion in Grade B area near UF/DF
+DEV-2026-0059,SITE-C,LT26C015,DEV-ENV,CLOSED,2026-07-01 10:23:47,2026-07-31 10:23:47,2026-08-03 11:23:47,2026-08-03 11:23:47,Environmental monitoring excursion in Grade B area near UF/DF
+DEV-2026-0060,SITE-C,LT26C030,DEV-EQP,OPEN,2026-09-06 15:49:32,2026-10-06 15:49:32,,2026-09-06 15:49:32,Equipment alarm during bulk fill; UFDF-02 paused for 33 minutes
+DEV-2026-0060,SITE-C,LT26C030,DEV-EQP,IN_INVESTIGATION,2026-09-06 15:49:32,2026-10-06 15:49:32,,2026-09-14 23:49:32,Equipment alarm during bulk fill; UFDF-02 paused for 33 minutes
+DEV-2026-0060,SITE-C,LT26C030,DEV-EQP,PENDING_CAPA,2026-09-06 15:49:32,2026-10-06 15:49:32,,2026-09-18 00:49:32,Equipment alarm during bulk fill; UFDF-02 paused for 33 minutes
+DEV-2026-0060,SITE-C,LT26C030,DEV-EQP,CLOSED,2026-09-06 15:49:32,2026-10-06 15:49:32,2026-10-05 20:49:32,2026-10-05 20:49:32,Equipment alarm during bulk fill; UFDF-02 paused for 33 minutes
+DEV-2026-0061,SITE-B,,DEV-ENV,OPEN,2026-06-12 19:11:17,2026-07-12 19:11:17,,2026-06-12 19:11:17,Environmental monitoring excursion in Grade C area near Protein A capture
+DEV-2026-0061,SITE-B,,DEV-ENV, IN_INVESTIGATION ,2026-06-12 19:11:17,2026-07-12 19:11:17,,2026-06-15 20:11:17,Environmental monitoring excursion in Grade C area near Protein A capture
+DEV-2026-0062,SITE-B,LT26B032,DEV-ENV,OPEN,2026-09-10 00:25:01,2026-10-10 00:25:01,,2026-09-10 00:25:01,Environmental monitoring excursion in Grade A area near Protein A capture
+DEV-2026-0063,SITE-B,LT26B059,DEV-ENV,OPEN,2026-06-12 12:40:18,2026-07-12 12:40:18,,2026-06-12 12:40:18,Environmental monitoring excursion in Grade A area near seed train
+DEV-2026-0063,SITE-B,LT26B059,DEV-ENV,IN_INVESTIGATION,2026-06-12 12:40:18,2026-07-12 12:40:18,,2026-06-15 14:40:18,Environmental monitoring excursion in Grade A area near seed train
+DEV-2026-0063,SITE-B,LT26B059,DEV-ENV,CLOSED,2026-06-12 12:40:18,2026-07-12 12:40:18,2026-06-27 18:40:18,2026-06-27 18:40:18,Environmental monitoring excursion in Grade A area near seed train
+DEV-2026-0064,SITE-B,,DEV-PROC,OPEN,2026-06-17 10:46:49,2026-07-17 10:46:49,,2026-06-17 10:46:49,Process parameter outside normal operating range at production bioreactor
+DEV-2026-0064,SITE-B,,DEV-PROC,IN_INVESTIGATION,2026-06-17 10:46:49,2026-07-17 10:46:49,,2026-06-20 11:46:49,Process parameter outside normal operating range at production bioreactor
+DEV-2026-0064,SITE-B,,DEV-PROC,PENDING_CAPA,2026-06-17 10:46:49,2026-07-17 10:46:49,,2026-07-02 14:46:49,Process parameter outside normal operating range at production bioreactor
+DEV-2026-0065,SITE-A,LT26A004,DEV-PROC,OPEN,2026-06-10 17:19:11,2026-07-10 17:19:11,,2026-06-10 17:19:11,Process parameter outside normal operating range at harvest
+DEV-2026-0065,SITE-A,LT26A004,DEV-PROC,CANCELLED,2026-06-10 17:19:11,2026-07-10 17:19:11,2026-06-29 13:19:11,2026-06-29 13:19:11,Process parameter outside normal operating range at harvest
+DEV-2026-0066,SITE-B,LT26B047,DEV-DOC,OPEN,2026-06-08 16:45:53,2026-07-08 16:45:53,,2026-06-08 16:45:53,Batch record entry missing second-person verification at UF/DF
+DEV-2026-0066,SITE-B,LT26B047,DEV-DOC,CANCELLED,2026-06-08 16:45:53,2026-07-08 16:45:53,2026-06-15 20:45:53,2026-06-15 20:45:53,Batch record entry missing second-person verification at UF/DF
+DEV-2026-0067,SITE-B,,DEV-PROC,OPEN,2026-09-04 06:56:51,2026-10-04 06:56:51,,2026-09-04 06:56:51,Process parameter outside normal operating range at production bioreactor
+DEV-2026-0067,SITE-B,,DEV-PROC,IN_INVESTIGATION,2026-09-04 06:56:51,2026-10-04 06:56:51,,2026-09-08 14:56:51,Process parameter outside normal operating range at production bioreactor
+DEV-2026-0067,SITE-B,,DEV-PROC,CLOSED,2026-09-04 06:56:51,2026-10-04 06:56:51,2026-09-12 21:56:51,2026-09-12 21:56:51,Process parameter outside normal operating range at production bioreactor
+DEV-2026-0068,SITE-A,LT26A034,DEV-DOC,OPEN,2026-09-01 09:52:59,2026-10-01 09:52:59,,2026-09-01 09:52:59,Batch record entry missing second-person verification at seed train
+DEV-2026-0068,SITE-A,LT26A034,DEV-DOC, IN_INVESTIGATION ,2026-09-01 09:52:59,2026-10-01 09:52:59,,2026-09-17 19:52:59,Batch record entry missing second-person verification at seed train
+DEV-2026-0069,SITE-A,LT26A052,DEV-EQP,OPEN,2026-10-08 18:35:39,2026-11-07 18:35:39,,2026-10-08 18:35:39,Equipment alarm during harvest; CENTRIFUGE-4 paused for 80 minutes
+DEV-2026-0070,SITE-B,LT26B020,DEV-PROC,OPEN,2026-09-18 15:29:18,2026-10-18 15:29:18,,2026-09-18 15:29:18,Process parameter outside normal operating range at harvest
+DEV-2026-0070,SITE-B,LT26B020,DEV-PROC,IN_INVESTIGATION,2026-09-18 15:29:18,2026-10-18 15:29:18,,2026-10-03 11:29:18,Process parameter outside normal operating range at harvest
+DEV-2026-0070,SITE-B,LT26B020,DEV-PROC,Closed,2026-09-18 15:29:18,2026-10-18 15:29:18,2026-10-06 01:29:18,2026-10-06 01:29:18,Process parameter outside normal operating range at harvest
+DEV-2026-0071,SITE-C,,DEV-PROC,OPEN,2026-09-07 02:52:50,2026-10-07 02:52:50,,2026-09-07 02:52:50,Process parameter outside normal operating range at UF/DF
+DEV-2026-0071,SITE-C,,DEV-PROC,In_Investigation,2026-09-07 02:52:50,2026-10-07 02:52:50,,2026-09-13 02:52:50,Process parameter outside normal operating range at UF/DF
+DEV-2026-0071,SITE-C,,DEV-PROC,PENDING_CAPA,2026-09-07 02:52:50,2026-10-07 02:52:50,,2026-10-01 09:52:50,Process parameter outside normal operating range at UF/DF
+DEV-2026-0071,SITE-C,,DEV-PROC,CLOSED,2026-09-07 02:52:50,2026-10-07 02:52:50,2026-10-05 03:52:50,2026-10-05 03:52:50,Process parameter outside normal operating range at UF/DF
+DEV-2026-0072,SITE-A,,DEV-DOC,OPEN,2026-07-18 09:12:42,2026-08-17 09:12:42,,2026-07-18 09:12:42,Batch record entry missing second-person verification at harvest
+DEV-2026-0072,SITE-A,,DEV-DOC,IN_INVESTIGATION,2026-07-18 09:12:42,2026-08-17 09:12:42,,2026-07-22 13:12:42,Batch record entry missing second-person verification at harvest
+DEV-2026-0072,SITE-A,,DEV-DOC,PENDING_CAPA,2026-07-18 09:12:42,2026-08-17 09:12:42,,2026-08-04 03:12:42,Batch record entry missing second-person verification at harvest
+DEV-2026-0072,SITE-A,,DEV-DOC,CLOSED,2026-07-18 09:12:42,2026-08-17 09:12:42,2026-08-07 22:12:42,2026-08-07 22:12:42,Batch record entry missing second-person verification at harvest
+DEV-2026-0073,SITE-C,LT26C024,DEV-ENV,OPEN,2026-10-02 05:39:42,2026-11-01 05:39:42,,2026-10-02 05:39:42,Environmental monitoring excursion in Grade A area near polishing chromatography
+DEV-2026-0074,SITE-C,,DEV-DOC,OPEN,2026-07-16 23:37:27,2026-08-15 23:37:27,,2026-07-16 23:37:27,Batch record entry missing second-person verification at harvest
+DEV-2026-0074,SITE-C,,DEV-DOC,CANCELLED,2026-07-16 23:37:27,2026-08-15 23:37:27,2026-07-23 00:37:27,2026-07-23 00:37:27,Batch record entry missing second-person verification at harvest
+DEV-2026-0075,SITE-A,LT26A052,DEV-LAB,OPEN,2026-08-12 21:58:34,2026-09-11 21:58:34,,2026-08-12 21:58:34,QC sample handling deviation; aliquot held 36 minutes before testing
+DEV-2026-0075,SITE-A,LT26A052,DEV-LAB,CANCELLED,2026-08-12 21:58:34,2026-09-11 21:58:34,2026-08-26 23:58:34,2026-08-26 23:58:34,QC sample handling deviation; aliquot held 36 minutes before testing
+DEV-2026-0076,SITE-B,,DEV-EQP,OPEN,2026-09-24 23:05:24,2026-10-24 23:05:24,,2026-09-24 23:05:24,Equipment alarm during polishing chromatography; CHR-SKID-07 paused for 79 minutes
+DEV-2026-0076,SITE-B,,DEV-EQP,IN_INVESTIGATION,2026-09-24 23:05:24,2026-10-24 23:05:24,,2026-10-07 04:05:24,Equipment alarm during polishing chromatography; CHR-SKID-07 paused for 79 minutes
+DEV-2026-0077,SITE-B,LT26B065,DEV-LAB,OPEN,2026-07-31 02:41:59,2026-08-30 02:41:59,,2026-07-31 02:41:59,QC sample handling deviation; aliquot held 13 minutes before testing
+DEV-2026-0077,SITE-B,LT26B065,DEV-LAB,in investigation,2026-07-31 02:41:59,2026-08-30 02:41:59,,2026-08-09 03:41:59,QC sample handling deviation; aliquot held 13 minutes before testing
+DEV-2026-0077,SITE-B,LT26B065,DEV-LAB,PENDING_CAPA,2026-07-31 02:41:59,2026-08-30 02:41:59,,2026-08-27 05:41:59,QC sample handling deviation; aliquot held 13 minutes before testing
+DEV-2026-0077,SITE-B,LT26B065,DEV-LAB,CLOSED,2026-07-31 02:41:59,2026-08-30 02:41:59,2026-09-13 23:41:59,2026-09-13 23:41:59,QC sample handling deviation; aliquot held 13 minutes before testing
+DEV-2026-0078,SITE-C,LT26C063,DEV-LAB,OPEN,2026-08-22 19:54:53,2026-09-21 19:54:53,,2026-08-22 19:54:53,QC sample handling deviation; aliquot held 46 minutes before testing
+DEV-2026-0078,SITE-C,LT26C063,DEV-LAB,IN_INVESTIGATION,2026-08-22 19:54:53,2026-09-21 19:54:53,,2026-09-05 09:54:53,QC sample handling deviation; aliquot held 46 minutes before testing
+DEV-2026-0078,SITE-C,LT26C063,DEV-LAB,CLOSED,2026-08-22 19:54:53,2026-09-21 19:54:53,2026-09-19 22:54:53,2026-09-19 22:54:53,QC sample handling deviation; aliquot held 46 minutes before testing
+DEV-2026-0079,SITE-B,LT26B062,DEV-EQP,OPEN,2026-08-17 18:09:32,2026-09-16 18:09:32,,2026-08-17 18:09:32,Equipment alarm during production bioreactor; CHR-SKID-07 paused for 21 minutes
+DEV-2026-0079,SITE-B,LT26B062,DEV-EQP,IN_INVESTIGATION,2026-08-17 18:09:32,2026-09-16 18:09:32,,2026-09-01 19:09:32,Equipment alarm during production bioreactor; CHR-SKID-07 paused for 21 minutes
+DEV-2026-0079,SITE-B,LT26B062,DEV-EQP,pending capa,2026-08-17 18:09:32,2026-09-16 18:09:32,,2026-09-19 01:09:32,Equipment alarm during production bioreactor; CHR-SKID-07 paused for 21 minutes
+DEV-2026-0079,SITE-B,LT26B062,DEV-EQP,CLOSED,2026-08-17 18:09:32,2026-09-16 18:09:32,2026-09-23 10:09:32,2026-09-23 10:09:32,Equipment alarm during production bioreactor; CHR-SKID-07 paused for 21 minutes
+DEV-2026-0080,SITE-A,,DEV-ENV,OPEN,2026-08-22 10:08:13,2026-09-21 10:08:13,,2026-08-22 10:08:13,Environmental monitoring excursion in Grade C area near bulk fill
+DEV-2026-0080,SITE-A,,DEV-ENV,IN_INVESTIGATION,2026-08-22 10:08:13,2026-09-21 10:08:13,,2026-08-27 18:08:13,Environmental monitoring excursion in Grade C area near bulk fill
+DEV-2026-0080,SITE-A,,DEV-ENV,PENDING_CAPA,2026-08-22 10:08:13,2026-09-21 10:08:13,,2026-08-31 02:08:13,Environmental monitoring excursion in Grade C area near bulk fill
+DEV-2026-0080,SITE-A,,DEV-ENV,CLOSED,2026-08-22 10:08:13,2026-09-21 10:08:13,2026-09-09 21:08:13,2026-09-09 21:08:13,Environmental monitoring excursion in Grade C area near bulk fill
+DEV-2026-0081,SITE-A,LT26A016,DEV-EQP,OPEN,2026-06-26 20:00:06,2026-07-26 20:00:06,,2026-06-26 20:00:06,Equipment alarm during production bioreactor; FILL-LINE-1 paused for 27 minutes
+DEV-2026-0081,SITE-A,LT26A016,DEV-EQP,IN_INVESTIGATION,2026-06-26 20:00:06,2026-07-26 20:00:06,,2026-07-04 11:00:06,Equipment alarm during production bioreactor; FILL-LINE-1 paused for 27 minutes
+DEV-2026-0081,SITE-A,LT26A016,DEV-EQP,CLOSED,2026-06-26 20:00:06,2026-07-26 20:00:06,2026-07-13 01:00:06,2026-07-13 01:00:06,Equipment alarm during production bioreactor; FILL-LINE-1 paused for 27 minutes
+DEV-2026-0082,SITE-B,LT26B026,DEV-ENV,OPEN,2026-06-10 16:50:12,2026-07-10 16:50:12,,2026-06-10 16:50:12,Environmental monitoring excursion in Grade B area near Protein A capture
+DEV-2026-0082,SITE-B,LT26B026,DEV-ENV,CANCELLED,2026-06-10 16:50:12,2026-07-10 16:50:12,2026-06-16 11:50:12,2026-06-16 11:50:12,Environmental monitoring excursion in Grade B area near Protein A capture
+DEV-2026-0083,SITE-B,LT26B044,DEV-ENV,OPEN,2026-10-05 23:49:52,2026-11-04 23:49:52,,2026-10-05 23:49:52,Environmental monitoring excursion in Grade B area near UF/DF
+DEV-2026-0084,SITE-B,,DEV-PROC,OPEN,2026-07-11 07:38:46,2026-08-10 07:38:46,,2026-07-11 07:38:46,Process parameter outside normal operating range at polishing chromatography
+DEV-2026-0084,SITE-B,,DEV-PROC,IN_INVESTIGATION,2026-07-11 07:38:46,2026-08-10 07:38:46,,2026-07-14 23:38:46,Process parameter outside normal operating range at polishing chromatography
+DEV-2026-0084,SITE-B,,DEV-PROC,PENDING_CAPA,2026-07-11 07:38:46,2026-08-10 07:38:46,,2026-07-20 07:38:46,Process parameter outside normal operating range at polishing chromatography
+DEV-2026-0084,SITE-B,,DEV-PROC,CLOSED,2026-07-11 07:38:46,2026-08-10 07:38:46,2026-07-31 02:38:46,2026-07-31 02:38:46,Process parameter outside normal operating range at polishing chromatography
+DEV-2026-0086,SITE-A,,DEV-ENV,OPEN,2026-06-22 15:53:46,2026-07-22 15:53:46,,2026-06-22 15:53:46,Environmental monitoring excursion in Grade D area near Protein A capture
+DEV-2026-0087,SITE-C,LT26C066,DEV-EQP,OPEN,2026-07-16 10:52:38,2026-08-15 10:52:38,,2026-07-16 10:52:38,Equipment alarm during polishing chromatography; FILL-LINE-1 paused for 23 minutes
+DEV-2026-0087,SITE-C,LT26C066,DEV-EQP,IN_INVESTIGATION,2026-07-16 10:52:38,2026-08-15 10:52:38,,2026-07-30 05:52:38,Equipment alarm during polishing chromatography; FILL-LINE-1 paused for 23 minutes
+DEV-2026-0087,SITE-C,LT26C066,DEV-EQP,pending capa,2026-07-16 10:52:38,2026-08-15 10:52:38,,2026-08-03 17:52:38,Equipment alarm during polishing chromatography; FILL-LINE-1 paused for 23 minutes
+DEV-2026-0087,SITE-C,LT26C066,DEV-EQP,CLOSED,2026-07-16 10:52:38,2026-08-15 10:52:38,2026-08-07 09:52:38,2026-08-07 09:52:38,Equipment alarm during polishing chromatography; FILL-LINE-1 paused for 23 minutes
+DEV-2026-0088,SITE-B,,DEV-LAB,OPEN,2026-09-21 16:19:50,2026-10-21 16:19:50,,2026-09-21 16:19:50,QC sample handling deviation; aliquot held 20 minutes before testing
+DEV-2026-0088,SITE-B,,DEV-LAB,IN_INVESTIGATION,2026-09-21 16:19:50,2026-10-21 16:19:50,,2026-09-24 11:19:50,QC sample handling deviation; aliquot held 20 minutes before testing
+DEV-2026-0088,SITE-B,,DEV-LAB,PENDING_CAPA,2026-09-21 16:19:50,2026-10-21 16:19:50,,2026-10-10 00:19:50,QC sample handling deviation; aliquot held 20 minutes before testing
+DEV-2026-0089,SITE-A,,DEV-ENV,OPEN,2026-07-13 07:47:29,2026-08-12 07:47:29,,2026-07-13 07:47:29,Environmental monitoring excursion in Grade A area near production bioreactor
+DEV-2026-0089,SITE-A,,DEV-ENV,CANCELLED,2026-07-13 07:47:29,2026-08-12 07:47:29,2026-07-17 16:47:29,2026-07-17 16:47:29,Environmental monitoring excursion in Grade A area near production bioreactor
+DEV-2026-0090,SITE-C,LT26C048,DEV-ENV,OPEN,2026-09-29 09:23:32,2026-10-29 09:23:32,,2026-09-29 09:23:32,Environmental monitoring excursion in Grade C area near production bioreactor
+DEV-2026-0091,SITE-B,LT26B002,DEV-EQP,OPEN,2026-06-01 09:49:37,2026-07-01 09:49:37,,2026-06-01 09:49:37,Equipment alarm during harvest; CENTRIFUGE-4 paused for 85 minutes
+DEV-2026-0091,SITE-B,LT26B002,DEV-EQP,IN_INVESTIGATION,2026-06-01 09:49:37,2026-07-01 09:49:37,,2026-06-19 04:49:37,Equipment alarm during harvest; CENTRIFUGE-4 paused for 85 minutes
+DEV-2026-0091,SITE-B,LT26B002,DEV-EQP,CLOSED,2026-06-01 09:49:37,2026-07-01 09:49:37,2026-07-07 07:49:37,2026-07-07 07:49:37,Equipment alarm during harvest; CENTRIFUGE-4 paused for 85 minutes
+DEV-2026-0092,SITE-C,LT26C027,DEV-LAB, OPEN ,2026-08-31 22:41:23,2026-09-30 22:41:23,,2026-08-31 22:41:23,QC sample handling deviation; aliquot held 12 minutes before testing
+DEV-2026-0092,SITE-C,LT26C027,DEV-LAB,CANCELLED,2026-08-31 22:41:23,2026-09-30 22:41:23,2026-09-09 17:41:23,2026-09-09 17:41:23,QC sample handling deviation; aliquot held 12 minutes before testing
+DEV-2026-0093,SITE-B,LT26B008,DEV-EQP,open,2026-08-31 21:25:22,2026-09-30 21:25:22,,2026-08-31 21:25:22,Equipment alarm during UF/DF; CENTRIFUGE-4 paused for 46 minutes
+DEV-2026-0093,SITE-B,LT26B008,DEV-EQP,IN_INVESTIGATION,2026-08-31 21:25:22,2026-09-30 21:25:22,,2026-09-07 16:25:22,Equipment alarm during UF/DF; CENTRIFUGE-4 paused for 46 minutes
+DEV-2026-0093,SITE-B,LT26B008,DEV-EQP,CLOSED,2026-08-31 21:25:22,2026-09-30 21:25:22,2026-09-13 19:25:22,2026-09-13 19:25:22,Equipment alarm during UF/DF; CENTRIFUGE-4 paused for 46 minutes
+DEV-2026-0094,SITE-C,LT26C015,DEV-LAB,OPEN,2026-07-16 01:52:45,2026-08-15 01:52:45,,2026-07-16 01:52:45,QC sample handling deviation; aliquot held 76 minutes before testing
+DEV-2026-0094,SITE-C,LT26C015,DEV-LAB,In_Investigation,2026-07-16 01:52:45,2026-08-15 01:52:45,,2026-08-01 08:52:45,QC sample handling deviation; aliquot held 76 minutes before testing
+DEV-2026-0094,SITE-C,LT26C015,DEV-LAB,CLOSED,2026-07-16 01:52:45,2026-08-15 01:52:45,2026-08-15 00:52:45,2026-08-15 00:52:45,QC sample handling deviation; aliquot held 76 minutes before testing
+DEV-2026-0095,SITE-B,LT26B053,DEV-EQP,OPEN,2026-07-02 19:46:08,2026-08-01 19:46:08,,2026-07-02 19:46:08,Equipment alarm during viral inactivation; CHR-SKID-07 paused for 44 minutes
+DEV-2026-0095,SITE-B,LT26B053,DEV-EQP,CANCELLED,2026-07-02 19:46:08,2026-08-01 19:46:08,2026-07-17 23:46:08,2026-07-17 23:46:08,Equipment alarm during viral inactivation; CHR-SKID-07 paused for 44 minutes
+DEV-2026-0096,SITE-C,LT26C033,DEV-DOC,OPEN,2026-07-12 18:35:56,2026-08-11 18:35:56,,2026-07-12 18:35:56,Batch record entry missing second-person verification at bulk fill
+DEV-2026-0096,SITE-C,LT26C033,DEV-DOC,IN_INVESTIGATION,2026-07-12 18:35:56,2026-08-11 18:35:56,,2026-07-26 07:35:56,Batch record entry missing second-person verification at bulk fill
+DEV-2026-0096,SITE-C,LT26C033,DEV-DOC,CLOSED,2026-07-12 18:35:56,2026-08-11 18:35:56,2026-08-02 18:35:56,2026-08-02 18:35:56,Batch record entry missing second-person verification at bulk fill
+DEV-2026-0097,SITE-A,,DEV-DOC,OPEN,2026-09-29 11:27:18,2026-10-29 11:27:18,,2026-09-29 11:27:18,Batch record entry missing second-person verification at UF/DF
+DEV-2026-0097,SITE-A,,DEV-DOC,IN_INVESTIGATION,2026-09-29 11:27:18,2026-10-29 11:27:18,,2026-10-11 20:27:18,Batch record entry missing second-person verification at UF/DF
+DEV-2026-0098,SITE-A,,DEV-LAB,OPEN,2026-06-04 02:31:50,2026-07-04 02:31:50,,2026-06-04 02:31:50,QC sample handling deviation; aliquot held 52 minutes before testing
+DEV-2026-0098,SITE-A,,DEV-LAB,IN_INVESTIGATION,2026-06-04 02:31:50,2026-07-04 02:31:50,,2026-06-20 21:31:50,QC sample handling deviation; aliquot held 52 minutes before testing
+DEV-2026-0098,SITE-A,,DEV-LAB,CLOSED,2026-06-04 02:31:50,2026-07-04 02:31:50,2026-06-24 16:31:50,2026-06-24 16:31:50,QC sample handling deviation; aliquot held 52 minutes before testing
+DEV-2026-0099,SITE-C,,DEV-ENV,OPEN,2026-08-01 16:28:08,2026-08-31 16:28:08,,2026-08-01 16:28:08,Environmental monitoring excursion in Grade C area near harvest
+DEV-2026-0099,SITE-C,,DEV-ENV,In_Investigation,2026-08-01 16:28:08,2026-08-31 16:28:08,,2026-08-19 11:28:08,Environmental monitoring excursion in Grade C area near harvest
+DEV-2026-0099,SITE-C,,DEV-ENV, PENDING_CAPA ,2026-08-01 16:28:08,2026-08-31 16:28:08,,2026-08-30 19:28:08,Environmental monitoring excursion in Grade C area near harvest
+DEV-2026-0099,SITE-C,,DEV-ENV,CLOSED,2026-08-01 16:28:08,2026-08-31 16:28:08,2026-09-06 21:28:08,2026-09-06 21:28:08,Environmental monitoring excursion in Grade C area near harvest
+DEV-2026-0100,SITE-C,LT26C030,DEV-ENV,OPEN,2026-06-09 01:59:09,2026-07-09 01:59:09,,2026-06-09 01:59:09,Environmental monitoring excursion in Grade B area near polishing chromatography
+DEV-2026-0100,SITE-C,LT26C030,DEV-ENV, IN_INVESTIGATION ,2026-06-09 01:59:09,2026-07-09 01:59:09,,2026-06-24 15:59:09,Environmental monitoring excursion in Grade B area near polishing chromatography
+DEV-2026-0100,SITE-C,LT26C030,DEV-ENV,CLOSED,2026-06-09 01:59:09,2026-07-09 01:59:09,2026-06-27 17:59:09,2026-06-27 17:59:09,Environmental monitoring excursion in Grade B area near polishing chromatography
+DEV-2026-0101,SITE-B,LT26B002,DEV-ENV,OPEN,2026-06-29 06:18:25,2026-07-29 06:18:25,,2026-06-29 06:18:25,Environmental monitoring excursion in Grade D area near seed train
+DEV-2026-0101,SITE-B,LT26B002,DEV-ENV,IN_INVESTIGATION,2026-06-29 06:18:25,2026-07-29 06:18:25,,2026-07-14 13:18:25,Environmental monitoring excursion in Grade D area near seed train
+DEV-2026-0101,SITE-B,LT26B002,DEV-ENV,closed,2026-06-29 06:18:25,2026-07-29 06:18:25,2026-07-29 20:18:25,2026-07-29 20:18:25,Environmental monitoring excursion in Grade D area near seed train
+DEV-2026-0102,SITE-A,,DEV-PROC,OPEN,2026-09-15 17:46:31,2026-10-15 17:46:31,,2026-09-15 17:46:31,Process parameter outside normal operating range at bulk fill
+DEV-2026-0102,SITE-A,,DEV-PROC,CANCELLED,2026-09-15 17:46:31,2026-10-15 17:46:31,2026-09-23 22:46:31,2026-09-23 22:46:31,Process parameter outside normal operating range at bulk fill
+DEV-2026-0103,SITE-A,LT26A058,DEV-EQP,OPEN,2026-08-22 16:29:39,2026-09-21 16:29:39,,2026-08-22 16:29:39,Equipment alarm during bulk fill; CHR-SKID-07 paused for 23 minutes
+DEV-2026-0103,SITE-A,LT26A058,DEV-EQP,Cancelled,2026-08-22 16:29:39,2026-09-21 16:29:39,2026-09-09 19:29:39,2026-09-09 19:29:39,Equipment alarm during bulk fill; CHR-SKID-07 paused for 23 minutes
+DEV-2026-0104,SITE-B,,DEV-ENV,OPEN,2026-06-22 12:22:15,2026-07-22 12:22:15,,2026-06-22 12:22:15,Environmental monitoring excursion in Grade D area near UF/DF
+DEV-2026-0104,SITE-B,,DEV-ENV,IN_INVESTIGATION,2026-06-22 12:22:15,2026-07-22 12:22:15,,2026-06-30 05:22:15,Environmental monitoring excursion in Grade D area near UF/DF
+DEV-2026-0104,SITE-B,,DEV-ENV,CLOSED,2026-06-22 12:22:15,2026-07-22 12:22:15,2026-07-02 05:22:15,2026-07-02 05:22:15,Environmental monitoring excursion in Grade D area near UF/DF
+DEV-2026-0105,SITE-B,LT26B005,DEV-EQP,OPEN,2026-06-20 14:02:26,2026-07-20 14:02:26,,2026-06-20 14:02:26,Equipment alarm during UF/DF; BR-2000-03 paused for 23 minutes
+DEV-2026-0105,SITE-B,LT26B005,DEV-EQP,IN_INVESTIGATION,2026-06-20 14:02:26,2026-07-20 14:02:26,,2026-06-30 08:02:26,Equipment alarm during UF/DF; BR-2000-03 paused for 23 minutes
+DEV-2026-0105,SITE-B,LT26B005,DEV-EQP,CLOSED,2026-06-20 14:02:26,2026-07-20 14:02:26,2026-07-11 10:02:26,2026-07-11 10:02:26,Equipment alarm during UF/DF; BR-2000-03 paused for 23 minutes
+DEV-2026-0106,SITE-B,LT26B056,DEV-LAB,OPEN,2026-07-18 14:56:24,2026-08-17 14:56:24,,2026-07-18 14:56:24,QC sample handling deviation; aliquot held 27 minutes before testing
+DEV-2026-0106,SITE-B,LT26B056,DEV-LAB,CANCELLED,2026-07-18 14:56:24,2026-08-17 14:56:24,2026-07-26 22:56:24,2026-07-26 22:56:24,QC sample handling deviation; aliquot held 27 minutes before testing
+DEV-2026-0107,SITE-C,LT26C039,DEV-EQP,OPEN,2026-08-26 16:32:43,2026-09-25 16:32:43,,2026-08-26 16:32:43,Equipment alarm during seed train; CENTRIFUGE-4 paused for 47 minutes
+DEV-2026-0107,SITE-C,LT26C039,DEV-EQP,IN_INVESTIGATION,2026-08-26 16:32:43,2026-09-25 16:32:43,,2026-08-29 10:32:43,Equipment alarm during seed train; CENTRIFUGE-4 paused for 47 minutes
+DEV-2026-0107,SITE-C,LT26C039,DEV-EQP,CLOSED,2026-08-26 16:32:43,2026-09-25 16:32:43,2026-09-01 11:32:43,2026-09-01 11:32:43,Equipment alarm during seed train; CENTRIFUGE-4 paused for 47 minutes
+DEV-2026-0108,SITE-C,LT26C057,DEV-ENV,OPEN,2026-09-16 06:54:26,2026-10-16 06:54:26,,2026-09-16 06:54:26,Environmental monitoring excursion in Grade C area near production bioreactor
+DEV-2026-0108,SITE-C,LT26C057,DEV-ENV,IN_INVESTIGATION,2026-09-16 06:54:26,2026-10-16 06:54:26,,2026-09-24 02:54:26,Environmental monitoring excursion in Grade C area near production bioreactor
+DEV-2026-0108,SITE-C,LT26C057,DEV-ENV,PENDING_CAPA,2026-09-16 06:54:26,2026-10-16 06:54:26,,2026-10-04 08:54:26,Environmental monitoring excursion in Grade C area near production bioreactor
+DEV-2026-0109,SITE-B,,DEV-EQP,OPEN,2026-08-14 22:13:14,2026-09-13 22:13:14,,2026-08-14 22:13:14,Equipment alarm during bulk fill; FILL-LINE-1 paused for 13 minutes
+DEV-2026-0109,SITE-B,,DEV-EQP,IN_INVESTIGATION,2026-08-14 22:13:14,2026-09-13 22:13:14,,2026-09-01 13:13:14,Equipment alarm during bulk fill; FILL-LINE-1 paused for 13 minutes
+DEV-2026-0109,SITE-B,,DEV-EQP,CLOSED,2026-08-14 22:13:14,2026-09-13 22:13:14,2026-09-12 18:13:14,2026-09-12 18:13:14,Equipment alarm during bulk fill; FILL-LINE-1 paused for 13 minutes
+DEV-2026-0110,SITE-B,LT26B065,DEV-EQP,OPEN,2026-08-29 13:41:26,2026-09-28 13:41:26,,2026-08-29 13:41:26,Equipment alarm during UF/DF; CHR-SKID-07 paused for 51 minutes
+DEV-2026-0110,SITE-B,LT26B065,DEV-EQP,IN_INVESTIGATION,2026-08-29 13:41:26,2026-09-28 13:41:26,,2026-09-12 18:41:26,Equipment alarm during UF/DF; CHR-SKID-07 paused for 51 minutes
+DEV-2026-0110,SITE-B,LT26B065,DEV-EQP,CLOSED,2026-08-29 13:41:26,2026-09-28 13:41:26,2026-09-14 20:41:26,2026-09-14 20:41:26,Equipment alarm during UF/DF; CHR-SKID-07 paused for 51 minutes
+DEV-2026-0111,SITE-A,LT26A004,DEV-LAB,OPEN,2026-08-30 23:57:35,2026-09-29 23:57:35,,2026-08-30 23:57:35,QC sample handling deviation; aliquot held 12 minutes before testing
+DEV-2026-0111,SITE-A,LT26A004,DEV-LAB,CANCELLED,2026-08-30 23:57:35,2026-09-29 23:57:35,2026-09-06 07:57:35,2026-09-06 07:57:35,QC sample handling deviation; aliquot held 12 minutes before testing
+DEV-2026-0112,SITE-A,LT26A049,DEV-DOC,OPEN,2026-10-09 11:56:38,2026-11-08 11:56:38,,2026-10-09 11:56:38,Batch record entry missing second-person verification at seed train
+DEV-2026-0113,SITE-A,LT26A049,DEV-ENV,OPEN,2026-08-22 01:22:48,2026-09-21 01:22:48,,2026-08-22 01:22:48,Environmental monitoring excursion in Grade A area near seed train
+DEV-2026-0113,SITE-A,LT26A049,DEV-ENV,IN_INVESTIGATION,2026-08-22 01:22:48,2026-09-21 01:22:48,,2026-09-05 19:22:48,Environmental monitoring excursion in Grade A area near seed train
+DEV-2026-0113,SITE-A,LT26A049,DEV-ENV,CLOSED,2026-08-22 01:22:48,2026-09-21 01:22:48,2026-09-21 06:22:48,2026-09-21 06:22:48,Environmental monitoring excursion in Grade A area near seed train
+DEV-2026-0115,SITE-C,LT26C027,DEV-ENV,OPEN,2026-08-30 04:32:20,2026-09-29 04:32:20,,2026-08-30 04:32:20,Environmental monitoring excursion in Grade A area near UF/DF
+DEV-2026-0115,SITE-C,LT26C027,DEV-ENV,CANCELLED,2026-08-30 04:32:20,2026-09-29 04:32:20,2026-09-12 07:32:20,2026-09-12 07:32:20,Environmental monitoring excursion in Grade A area near UF/DF
+DEV-2026-0116,SITE-A,,DEV-DOC,OPEN,2026-07-10 00:53:34,2026-08-09 00:53:34,,2026-07-10 00:53:34,Batch record entry missing second-person verification at harvest
+DEV-2026-0116,SITE-A,,DEV-DOC,CANCELLED,2026-07-10 00:53:34,2026-08-09 00:53:34,2026-07-19 19:53:34,2026-07-19 19:53:34,Batch record entry missing second-person verification at harvest
+DEV-2026-0117,SITE-A,,DEV-EQP,OPEN,2026-09-20 08:24:00,2026-10-20 08:24:00,,2026-09-20 08:24:00,Equipment alarm during Protein A capture; CENTRIFUGE-4 paused for 45 minutes
+DEV-2026-0117,SITE-A,,DEV-EQP,IN_INVESTIGATION,2026-09-20 08:24:00,2026-10-20 08:24:00,,2026-10-01 11:24:00,Equipment alarm during Protein A capture; CENTRIFUGE-4 paused for 45 minutes
+DEV-2026-0117,SITE-A,,DEV-EQP,PENDING_CAPA,2026-09-20 08:24:00,2026-10-20 08:24:00,,2026-10-08 12:24:00,Equipment alarm during Protein A capture; CENTRIFUGE-4 paused for 45 minutes
+DEV-2026-0117,SITE-A,,DEV-EQP,CLOSED,2026-09-20 08:24:00,2026-10-20 08:24:00,2026-10-11 23:24:00,2026-10-11 23:24:00,Equipment alarm during Protein A capture; CENTRIFUGE-4 paused for 45 minutes
+DEV-2026-0118,SITE-B,LT26B065,DEV-EQP,OPEN,2026-06-01 19:58:03,2026-07-01 19:58:03,,2026-06-01 19:58:03,Equipment alarm during seed train; CENTRIFUGE-4 paused for 66 minutes
+DEV-2026-0118,SITE-B,LT26B065,DEV-EQP,in investigation,2026-06-01 19:58:03,2026-07-01 19:58:03,,2026-06-13 02:58:03,Equipment alarm during seed train; CENTRIFUGE-4 paused for 66 minutes
+DEV-2026-0118,SITE-B,LT26B065,DEV-EQP,CLOSED,2026-06-01 19:58:03,2026-07-01 19:58:03,2026-06-17 03:58:03,2026-06-17 03:58:03,Equipment alarm during seed train; CENTRIFUGE-4 paused for 66 minutes
+DEV-2026-0119,SITE-C,LT26C009,DEV-DOC,Open,2026-07-07 00:42:56,2026-08-06 00:42:56,,2026-07-07 00:42:56,Batch record entry missing second-person verification at viral inactivation
+DEV-2026-0119,SITE-C,LT26C009,DEV-DOC,CANCELLED,2026-07-07 00:42:56,2026-08-06 00:42:56,2026-07-18 04:42:56,2026-07-18 04:42:56,Batch record entry missing second-person verification at viral inactivation
+DEV-2026-0120,SITE-A,LT26A004,DEV-PROC,OPEN,2026-08-13 21:40:03,2026-09-12 21:40:03,,2026-08-13 21:40:03,Process parameter outside normal operating range at UF/DF
+DEV-2026-0120,SITE-A,LT26A004,DEV-PROC,CANCELLED,2026-08-13 21:40:03,2026-09-12 21:40:03,2026-08-31 17:40:03,2026-08-31 17:40:03,Process parameter outside normal operating range at UF/DF
+DEV-2026-0005,SITE-C,LT26C054,DEV-EQP,CLOSED,2026-08-08 20:12:58,2026-09-07 20:12:58,2026-01-01 00:00:00,2026-10-05 10:00:00,Equipment alarm during bulk fill; BR-2000-03 paused for 66 minutes

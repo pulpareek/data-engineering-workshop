@@ -1,0 +1,43 @@
+-- ============================================================================
+-- LAB 06 | GOLD | QC results: same source, two shapes
+--   1) Uncomment. 2) Choose STREAMING TABLE or MATERIALIZED VIEW for EACH dataset and justify it.
+--   3) The OOS event table reads its source incrementally: fill the STREAM(...) source.
+-- ============================================================================
+-- -- ============================================================================
+-- -- GOLD | inspection quality
+-- --   gold_inspection_quality : ??, grain site x test x day   (aggregate -> recompute)
+-- --   gold_oos_events         : ??, grain one row per OOS result (event -> append)
+-- -- Same source, two shapes: this is the streaming-table vs materialized-view choice.
+-- -- ============================================================================
+-- CREATE OR REFRESH <FILL-IN: STREAMING TABLE | MATERIALIZED VIEW> gold_inspection_quality
+-- COMMENT "QC pass rate and out-of-spec counts. Grain: site x test x measured date. Synthetic training data."
+-- TBLPROPERTIES ('quality' = 'gold')
+-- AS SELECT
+--   site_code,
+--   test_code,
+--   to_date(measured_at)                                    AS measured_date,
+--   count(*)                                                AS total_results,
+--   count_if(is_oos)                                        AS oos_results,
+--   round(100 * count_if(NOT is_oos) / count(*), 2)         AS pass_rate_pct
+-- FROM silver_inspection_result
+-- GROUP BY ALL;
+--
+-- -- Stream-snapshot join: each NEW result is enriched with the batch record as it is now.
+-- CREATE OR REFRESH <FILL-IN: STREAMING TABLE | MATERIALIZED VIEW> gold_oos_events
+-- COMMENT "Every out-of-spec QC result, enriched with product and lot dates. Grain: one row per OOS result. Synthetic training data."
+-- TBLPROPERTIES ('quality' = 'gold')
+-- AS SELECT
+--   i.source_sample_id,
+--   i.lot_id,
+--   i.site_code,
+--   b.product_code,
+--   i.test_code,
+--   i.measured_value,
+--   i.lower_limit,
+--   i.upper_limit,
+--   i.measured_at,
+--   b.ended_at          AS lot_ended_at,
+--   i.source_file
+-- FROM <FILL-IN: STREAM(silver_inspection_result)> i
+-- LEFT JOIN silver_batch_record b ON i.lot_id = b.lot_id
+-- WHERE i.is_oos;

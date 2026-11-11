@@ -1,0 +1,30 @@
+# Benchmark questions for the IOPS Genie space: the questions users really ask, with ground truth.
+# `expected` is a path into data/expected_metrics.json after batch 3, so the answer key never drifts from the data.
+# `sql` is the validated answer ({s} = catalog.schema). Graded by facilitator/eval_genie.py after every deploy
+# or instruction change. A failure is fixed where the meaning lives: table metadata (metadata.yml), the metric view,
+# or the Genie instructions -- not by editing the question.
+
+questions:
+  - question: How many lots are blocked?
+    expected: gold_lot_release_readiness.BLOCKED
+    sql: SELECT count(*) FROM {s}.gold_lot_release_readiness WHERE readiness_status = 'BLOCKED'
+
+  - question: How many lots are ready for QA review?
+    expected: gold_lot_release_readiness.READY_FOR_QA_REVIEW
+    sql: SELECT count(*) FROM {s}.gold_lot_release_readiness WHERE readiness_status = 'READY_FOR_QA_REVIEW'
+
+  - question: How many deviations are past due?
+    expected: gold_deviation_lifecycle.overdue
+    sql: SELECT count_if(is_overdue) FROM {s}.gold_deviation_lifecycle
+
+  - question: How many deviation cases are still open?
+    expected: gold_deviation_lifecycle.open
+    sql: SELECT count_if(is_open) FROM {s}.gold_deviation_lifecycle
+
+  - question: How many out-of-spec QC results do we have?
+    expected: gold_oos_events.rows
+    sql: SELECT count(*) FROM {s}.gold_oos_events
+
+  - question: How many change controls are open?
+    expected: gold_change_control_cycle_time.open
+    sql: SELECT count_if(is_open) FROM {s}.gold_change_control_cycle_time

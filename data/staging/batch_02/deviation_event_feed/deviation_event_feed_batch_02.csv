@@ -1,0 +1,25 @@
+source_case_id,site_code,lot_id,event_code,status_code,reported_at,target_due_at,resolved_at,source_updated_at,description
+DEV-2026-0004,SITE-C,,DEV-EQP,OPEN,2026-09-24 15:23:57,2026-10-24 15:23:57,,2026-09-24 15:23:57,Equipment alarm during UF/DF; CHR-SKID-07 paused for 31 minutes
+DEV-2026-0004,SITE-C,,DEV-EQP,CANCELLED,2026-09-24 15:23:57,2026-10-24 15:23:57,2026-10-12 08:23:57,2026-10-12 08:23:57,Equipment alarm during UF/DF; CHR-SKID-07 paused for 31 minutes
+DEV-2026-0006,SITE-C,LT26C054,DEV-LAB,IN_INVESTIGATION,2026-10-12 00:39:02,2026-11-11 00:39:02,,2026-10-15 02:39:02,QC sample handling deviation; aliquot held 49 minutes before testing
+DEV-2026-0008,SITE-B,LT26B023,DEV-PROC,CLOSED,2026-09-21 05:59:17,2026-10-21 05:59:17,2026-10-15 11:59:17,2026-10-15 11:59:17,Process parameter outside normal operating range at production bioreactor
+DEV-2026-0013,SITE-C,LT26C054,DEV-EQP,OPEN,2026-10-16 13:45:47,2026-11-15 13:45:47,,2026-10-16 13:45:47,Equipment alarm during viral inactivation; BR-2000-03 paused for 46 minutes
+DEV-2026-0015,SITE-C,LT26C039,DEV-PROC,OPEN,2026-07-25 17:53:09,2026-08-24 17:53:09,,2026-07-25 17:53:09,Process parameter outside normal operating range at Protein A capture
+DEV-2026-0015,SITE-C,LT26C039,DEV-PROC,IN_INVESTIGATION,2026-07-25 17:53:09,2026-08-24 17:53:09,,2026-07-27 18:53:09,Process parameter outside normal operating range at Protein A capture
+DEV-2026-0022,SITE-B,LT26B047,DEV-ENV,IN_INVESTIGATION,2026-10-08 17:38:19,2026-11-07 17:38:19,,2026-10-21 09:38:19,Environmental monitoring excursion in Grade B area near harvest
+DEV-2026-0026,SITE-A,,DEV-DOC,OPEN,2026-07-13 09:01:31,2026-08-12 09:01:31,,2026-07-13 09:01:31,Batch record entry missing second-person verification at seed train
+DEV-2026-0026,SITE-A,,DEV-DOC,IN_INVESTIGATION,2026-07-13 09:01:31,2026-08-12 09:01:31,,2026-07-31 21:01:31,Batch record entry missing second-person verification at seed train
+DEV-2026-0038,SITE-A,LT26A016,DEV-DOC,OPEN,2026-10-14 18:21:16,2026-11-13 18:21:16,,2026-10-14 18:21:16,Batch record entry missing second-person verification at harvest
+DEV-2026-0038,SITE-A,LT26A016,DEV-DOC,IN_INVESTIGATION,2026-10-14 18:21:16,2026-11-13 18:21:16,,2026-10-21 04:21:16,Batch record entry missing second-person verification at harvest
+DEV-2026-0042,SITE-A,LT26A028,DEV-ENV,OPEN,2026-10-15 23:58:30,2026-11-14 23:58:30,,2026-10-15 23:58:30,Environmental monitoring excursion in Grade A area near polishing chromatography
+DEV-2026-0057,SITE-A,,DEV-LAB,in investigation,2026-10-04 04:56:54,2026-11-03 04:56:54,,2026-10-14 09:56:54,QC sample handling deviation; aliquot held 57 minutes before testing
+DEV-2026-0076,SITE-B,,DEV-EQP,CLOSED,2026-09-24 23:05:24,2026-10-24 23:05:24,2026-10-14 17:05:24,2026-10-14 17:05:24,Equipment alarm during polishing chromatography; CHR-SKID-07 paused for 79 minutes
+DEV-2026-0083,SITE-B,LT26B044,DEV-ENV,IN_INVESTIGATION,2026-10-05 23:49:52,2026-11-04 23:49:52,,2026-10-20 19:49:52,Environmental monitoring excursion in Grade B area near UF/DF
+DEV-2026-0085,SITE-B,LT26B038,DEV-EQP,OPEN,2026-10-17 15:47:14,2026-11-16 15:47:14,,2026-10-17 15:47:14,Equipment alarm during harvest; UFDF-02 paused for 61 minutes
+DEV-2026-0090,SITE-C,LT26C048,DEV-ENV,IN_INVESTIGATION,2026-09-29 09:23:32,2026-10-29 09:23:32,,2026-10-15 04:23:32,Environmental monitoring excursion in Grade C area near production bioreactor
+DEV-2026-0108,SITE-C,LT26C057,DEV-ENV,Closed,2026-09-16 06:54:26,2026-10-16 06:54:26,2026-10-14 23:54:26,2026-10-14 23:54:26,Environmental monitoring excursion in Grade C area near production bioreactor
+DEV-2026-0112,SITE-A,LT26A049,DEV-DOC,In_Investigation,2026-10-09 11:56:38,2026-11-08 11:56:38,,2026-10-15 00:56:38,Batch record entry missing second-person verification at seed train
+DEV-2026-0114,SITE-C,LT26C054,DEV-ENV,OPEN,2026-10-19 01:07:31,2026-11-18 01:07:31,,2026-10-19 01:07:31,Environmental monitoring excursion in Grade B area near UF/DF
+DEV-2026-0017,,,DEV-DOC,OPEN,2026-09-15 19:19:26,2026-10-15 19:19:26,,2026-10-16 09:00:00,Batch record entry missing second-person verification at polishing chromatography
+DEV-2026-0029,,LT26A019,DEV-ENV,OPEN,2026-06-07 13:51:17,2026-07-07 13:51:17,,2026-10-17 15:30:00,Environmental monitoring excursion in Grade A area near bulk fill
+DEV-2026-0041,SITE-C,,DEV-LAB,ON_HOLD_X,2026-06-25 04:47:48,2026-07-25 04:47:48,,2026-10-18 12:00:00,QC sample handling deviation; aliquot held 47 minutes before testing
