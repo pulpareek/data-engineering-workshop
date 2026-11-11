@@ -157,6 +157,44 @@
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC ## Unity Catalog semantics: the five building blocks
+# MAGIC The modeled knowledge Genie One trusts. You build two today; the other three need an admin or domain owner, so here is what each does and how to switch it on.
+
+# COMMAND ----------
+
+# MAGIC %md-sandbox
+# MAGIC <div class="cw">
+# MAGIC <style>
+# MAGIC .cw { font-family: sans-serif; max-width: 1100px; margin: 0 auto; color: #0b2026; } .cw * { box-sizing: border-box; }
+# MAGIC .ds-row { display: flex; gap: 24px; align-items: stretch; flex-wrap: wrap; }
+# MAGIC .ds-row > * { flex: 1; min-width: 240px; }
+# MAGIC .ds-card { background: #F9F7F4; border-radius: 8px; box-shadow: 0 2px 8px rgba(27,49,57,0.06); padding: 20px; border-top: 8px solid var(--accent, #4299E0); }
+# MAGIC .blue{--accent:#4299E0;} .green{--accent:#00A972;} .coral{--accent:#FF5F46;} .amber{--accent:#FFAB00;} .red{--accent:#98102A;}
+# MAGIC .ds-card-title { font-size: 18pt; font-weight: 700; line-height: 1.25; margin: 0 0 8px; }
+# MAGIC .ds-card-text { font-size: 14pt; color: #5E7077; line-height: 1.55; margin: 0; }
+# MAGIC .ds-card ul, .ds-card ol { margin: 8px 0 0; padding-left: 20px; font-size: 14pt; line-height: 1.55; color: #0b2026; }
+# MAGIC .ds-card li { margin-bottom: 10px; } .ds-card li:last-child { margin-bottom: 0; }
+# MAGIC .tc { text-align: center; }
+# MAGIC .ds-card-label { font-size: 14pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+# MAGIC .ds-card-para { font-size: 14pt; color: #0b2026; line-height: 1.55; margin: 0; }
+# MAGIC .ds-stat { font-size: 26pt; font-weight: 800; color: var(--accent); line-height: 1.1; }
+# MAGIC .ds-stat-label { font-size: 14pt; color: #5E7077; margin-top: 6px; }
+# MAGIC .dd-head { font-size: 20pt; font-weight: 700; margin: 4px 0 12px; color: var(--accent); }
+# MAGIC .ds-card code, .ds-callout code { background: #EEEDE9; padding: 1px 5px; border-radius: 4px; font-size: 14pt; }
+# MAGIC .dt { width: 100%; border-collapse: collapse; font-size: 14pt; background: #FFFFFF; border-radius: 8px; overflow: hidden; }
+# MAGIC .dt th { text-align: left; padding: 8px 8px; background: #EEEDE9; color: #0b2026; font-weight: 700; }
+# MAGIC .dt td { padding: 8px 8px; white-space: nowrap; border-top: 1px solid #EEEDE9; color: #0b2026; }
+# MAGIC .dt tr.hl td { background: rgba(0,169,114,0.10); font-weight: 600; }
+# MAGIC .dt tr.old td { color: #5E7077; }
+# MAGIC .dt-title { font-size: 16pt; font-weight: 700; margin: 0 0 8px; }
+# MAGIC .dt-note { font-size: 14pt; color: #5E7077; margin-top: 8px; line-height: 1.5; }
+# MAGIC </style>
+# MAGIC <div class="ds-row"><div class="ds-card amber"><table class="dt"><tr><th>Building block</th><th>What it gives people and Genie</th><th>In this workshop</th><th>Who can create it</th></tr><tr class=""><td>Metric views</td><td>One governed definition per KPI</td><td>Section G: <code>mv_deviation_kpis</code></td><td>you (CREATE on the schema)</td></tr><tr class=""><td>Certification</td><td>Trusted vs outdated badge; Genie prefers certified</td><td><code>metadata.yml</code> &rarr; <code>system.certification_status</code></td><td>steward with ASSIGN on the system tag</td></tr><tr class=""><td>Domains</td><td>Browse data by business area on the Discover page</td><td>schema tag <em>Manufacturing and Quality/Quality and Deviations</em></td><td>admin (MANAGE DISCOVER) publishes; you tag the schema</td></tr><tr class=""><td>Pages</td><td>Owner-approved business terms, e.g. &quot;Ready for QA review&quot;</td><td>write the definition from the readiness description</td><td>domain manager (MANAGE PAGES)</td></tr><tr class=""><td>Wikis (Beta)</td><td>Meaning, intended use and sources of one table</td><td>start from the gold table comments in <code>metadata.yml</code></td><td>table owner</td></tr></table></div></div>
+# MAGIC </div>
+
+# COMMAND ----------
+
 # MAGIC %md-sandbox
 # MAGIC <div class="cw">
 # MAGIC <style>

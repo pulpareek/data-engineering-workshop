@@ -5,12 +5,34 @@
 # Stewards: edit descriptions here (or approve AI suggestions in notebook 13), open a PR.
 # `governed_tags` are validated by Unity Catalog tag policies; rejected values are reported, not ignored.
 
+# Tag conventions (Unity Catalog tagging best practice): lowercase snake_case keys, few fixed values,
+# one value per key, boolean flags as separate keys (contains_free_text: "true"), nothing sensitive.
+# Coarse tags go once on the schema: ABAC policies and UC domains inherit them to every table.
+
+schema:
+  tags: {domain: quality}
+  # UC domain (Discover page): a domain IS a governed tag. Tagging the schema puts every table in it.
+  # Skipped, not failed, when the workspace has no such domain.
+  domain_tag: Manufacturing and Quality/Quality and Deviations
+
+# Target name -> `environment` tag value (governed tags often allow only dev/staging/prod/demo).
+environments: {dev: dev, qa: staging, ref: demo, prod: prod}
+
 defaults:
   tags:
     domain: quality
-    data_product: lot_release_readiness
+    use_case: lot_release_readiness
     source_system: synthetic_workshop
-  governed_tags: {}          # e.g. data_classification: u-nnpi  (must be an allowed value of the policy)
+  governed_tags: {}          # e.g. data_classification: <allowed value>  (must match the tag policy)
+  # Shared columns: described once, applied to every table that has them.
+  columns:
+    site_code: Manufacturing site (SITE-A, SITE-B, SITE-C; synthetic).
+    lot_id: Drug-substance lot identifier; joins to gold_lot_release_readiness.lot_id.
+    product_code: Product code (RX-101, RX-205; synthetic).
+    test_code: QC test (TITER_G_L, SEC_MONOMER_PCT, ENDOTOXIN_EU_ML, BIOBURDEN_CFU, PH, HCP_PPM).
+    as_of_date: Reporting date from the pipeline parameter as_of_date; ages and overdue flags use it.
+    source_file: File the row was loaded from (trace to source).
+    latest_source_file: File that delivered the latest version of the record (trace to source).
 
 tables:
   gold_deviation_lifecycle:
@@ -31,10 +53,18 @@ tables:
       is_open: True when current_status is not CLOSED or CANCELLED.
       is_overdue: True when the case is open and the as-of date is after target_due_at.
       age_days: Days from first report to resolution, or to the as-of date if still open.
+      event_code: Deviation category code from the QMS.
+      description: Free-text deviation description as written by the reporter.
+      reported_at: When the deviation was first reported.
+      target_due_at: Investigation due date; drives is_overdue.
+      resolved_at: When the case reached CLOSED or CANCELLED; NULL while open.
+      event_count: Number of status events received for the case.
       action_count: Number of corrective actions linked to the case (deduplicated).
       open_action_count: Corrective actions still OPEN or IN_PROGRESS.
     column_tags:
-      description: {contains_free_text: "true"}
+      # masking_rule / row_filter: governed tags that ABAC policies match on (Lab 11 section F).
+      description: {contains_free_text: "true", masking_rule: redact}
+      site_code: {row_filter: by_plant}
       is_overdue: {kpi: "true"}
 
   gold_change_control_cycle_time:
@@ -51,6 +81,14 @@ tables:
       submit_to_approve_days: Days from submission to approval; NULL until approved.
       submit_to_close_days: Days from submission to closure; NULL until closed.
       is_open: True for SUBMITTED, APPROVED or IMPLEMENTED changes.
+      source_change_id: Change control identifier (synthetic).
+      change_type: EQUIPMENT, PROCESS, DOCUMENT, SUPPLIER or ANALYTICAL_METHOD; the first two plus ANALYTICAL_METHOD are quality-impacting.
+      submitted_at: When the change was submitted.
+      approved_at: When the change was approved; NULL until approved.
+      effective_at: When the change took effect.
+      closed_at: When the change was closed.
+      approve_to_effective_days: Days from approval to effective date.
+      age_days: Days from submission to closure, or to the as-of date if still open.
     column_tags:
       submit_to_approve_days: {kpi: "true"}
 
@@ -67,6 +105,8 @@ tables:
     columns:
       pass_rate_pct: Percentage of results inside the specification limits.
       oos_results: Count of valid results outside the specification limits.
+      measured_date: Day the QC samples were measured.
+      total_results: Valid QC results for the site, test and day.
     column_tags:
       pass_rate_pct: {kpi: "true"}
 
@@ -78,6 +118,14 @@ tables:
     description: >-
       Every out-of-spec QC result, enriched with product and lot dates.
       Grain and key: one row per source_sample_id. Joins: lot_id to gold_lot_release_readiness.lot_id.
+      Caveat: append-only streaming table; product_code is NULL when the batch record arrived after the result.
+    columns:
+      source_sample_id: QC sample identifier from the LIMS (synthetic).
+      measured_value: Measured result, outside [lower_limit, upper_limit].
+      lower_limit: Lower specification limit.
+      upper_limit: Upper specification limit.
+      measured_at: When the sample was measured.
+      lot_ended_at: When the lot's batch record ended (from the batch-record feed).
 
   gold_lot_release_readiness:
     owner_group: iops-quality-data-owners
@@ -94,9 +142,17 @@ tables:
       readiness_status: BLOCKED (OOS or open major/critical deviation), AT_RISK (other open items or yield below 85%), else READY_FOR_QA_REVIEW.
       blocking_reasons: Human-readable reasons behind the status.
       yield_pct: Actual over planned yield, percent.
+      qc_results: Valid QC results for the lot.
+      oos_results: QC results outside specification for the lot.
+      open_deviations: Open deviation cases linked to the lot.
+      open_major_critical_deviations: Open MAJOR or CRITICAL deviation cases; any value above 0 blocks the lot.
+      open_actions: Open corrective actions on the lot's deviations.
+      pending_changes: Quality-impacting change controls (SUBMITTED or APPROVED) raised at the lot's site and product while the lot was made.
+      started_at: Batch record start.
+      ended_at: Batch record end.
 
   silver_inspection_result_quarantine:
     steward: qc-data-stewards
-    certification: uncertified
-    tags: {layer: quarantine}
+    certification: sandbox
+    tags: {layer: silver, table_role: quarantine}
     description: QC rows rejected by a record-quality rule, with quarantine_reason. Review and fix at the source.
