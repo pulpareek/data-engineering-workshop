@@ -43,7 +43,8 @@
 # MAGIC 2. **Read `databricks.yml`** and say what changes per target (dev, qa)
 # MAGIC 3. **Use variables** (built-in, custom, lookup) to keep the project portable
 # MAGIC 4. **Run the bundle lifecycle** (validate, deploy, run) and describe the QA gate
-# MAGIC 5. **List the production controls**: schedule, notifications, run as a service principal, CI
+# MAGIC 5. **Explain the Git workflow**: a pull request deploys dev, a merge deploys QA, run by GitHub Actions
+# MAGIC 6. **List the production controls**: schedule, notifications, run as a service principal, CI
 
 # COMMAND ----------
 
@@ -341,6 +342,131 @@
 # COMMAND ----------
 
 # MAGIC %md
+# MAGIC ## Git workflow: GitHub Actions deploys your bundle
+# MAGIC In production nobody clicks Deploy. Git changes trigger the same bundle commands you used, run by a service principal.
+
+# COMMAND ----------
+
+# MAGIC %md-sandbox
+# MAGIC <div style="max-width: 1100px; margin: 0 auto; font-family: sans-serif; color: #0b2026;"><div style="text-align: center; margin-bottom: 12px;"><div style="font-size: 22pt; font-weight: 700;">How GitHub Actions deploys your bundle</div><div style="font-size: 14pt; color: #618794; margin-top: 4px;">Top row: every pull request &middot; bottom row: every merge &middot; Actions signs in as a service principal (OIDC)</div></div><svg width="100%" viewBox="0 0 1158 254" role="img" style="font-family: sans-serif;"><defs><marker id="med-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#5E7077" stroke-width="1.5"/></marker></defs><path d="M854 196.0 L894 196.0" fill="none" stroke="#5E7077" stroke-width="1.6" marker-end="url(#med-arrow)"/><path d="M558 196.0 L598 196.0" fill="none" stroke="#5E7077" stroke-width="1.6" marker-end="url(#med-arrow)"/><path d="M262 196.0 L302 196.0" fill="none" stroke="#5E7077" stroke-width="1.6" marker-end="url(#med-arrow)"/><path d="M854 114.0 L894 114.0" fill="none" stroke="#5E7077" stroke-width="1.6" marker-end="url(#med-arrow)"/><path d="M558 114.0 L598 114.0" fill="none" stroke="#5E7077" stroke-width="1.6" marker-end="url(#med-arrow)"/><path d="M262 114.0 L302 114.0" fill="none" stroke="#5E7077" stroke-width="1.6" marker-end="url(#med-arrow)"/><rect x="10" y="10" width="250" height="32" rx="16" fill="#1B5162"/><text x="135.0" y="31" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF" letter-spacing="2">YOU</text><rect x="10" y="82.0" width="250" height="64" rx="8" fill="#1B5162" fill-opacity="0.10" stroke="#1B5162" stroke-width="1.5"/><g transform="translate(20,100.0)"><rect x="0" y="2" width="24" height="18" rx="2" fill="none" stroke="#1B5162" stroke-width="1.5"/><rect x="0" y="2" width="24" height="6" rx="2" fill="#1B5162"/><line x1="8" y1="8" x2="8" y2="20" stroke="#1B5162" stroke-width="1.2"/><line x1="16" y1="8" x2="16" y2="20" stroke="#1B5162" stroke-width="1.2"/><line x1="0" y1="14" x2="24" y2="14" stroke="#1B5162" stroke-width="1.2"/></g><text x="54" y="110.0" font-size="14" font-weight="700" fill="#0b2026" font-family="monospace">Git folder: branch</text><text x="54" y="130.0" font-size="14" fill="#5E7077">edit the bundle</text><rect x="10" y="164.0" width="250" height="64" rx="8" fill="#1B5162" fill-opacity="0.10" stroke="#1B5162" stroke-width="1.5"/><g transform="translate(20,182.0)"><rect x="0" y="2" width="24" height="18" rx="2" fill="none" stroke="#1B5162" stroke-width="1.5"/><rect x="0" y="2" width="24" height="6" rx="2" fill="#1B5162"/><line x1="8" y1="8" x2="8" y2="20" stroke="#1B5162" stroke-width="1.2"/><line x1="16" y1="8" x2="16" y2="20" stroke="#1B5162" stroke-width="1.2"/><line x1="0" y1="14" x2="24" y2="14" stroke="#1B5162" stroke-width="1.2"/></g><text x="54" y="192.0" font-size="14" font-weight="700" fill="#0b2026" font-family="monospace">Review + merge</text><text x="54" y="212.0" font-size="14" fill="#5E7077">approve the change</text><rect x="306" y="10" width="250" height="32" rx="16" fill="#4299E0"/><text x="431.0" y="31" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF" letter-spacing="2">GITHUB</text><rect x="306" y="82.0" width="250" height="64" rx="8" fill="#4299E0" fill-opacity="0.10" stroke="#4299E0" stroke-width="1.5"/><g transform="translate(316,100.0)"><rect x="0" y="2" width="24" height="18" rx="2" fill="none" stroke="#4299E0" stroke-width="1.5"/><rect x="0" y="2" width="24" height="6" rx="2" fill="#4299E0"/><line x1="8" y1="8" x2="8" y2="20" stroke="#4299E0" stroke-width="1.2"/><line x1="16" y1="8" x2="16" y2="20" stroke="#4299E0" stroke-width="1.2"/><line x1="0" y1="14" x2="24" y2="14" stroke="#4299E0" stroke-width="1.2"/></g><text x="350" y="110.0" font-size="14" font-weight="700" fill="#0b2026" font-family="monospace">Pull request</text><text x="350" y="130.0" font-size="14" fill="#5E7077">to main</text><rect x="306" y="164.0" width="250" height="64" rx="8" fill="#4299E0" fill-opacity="0.10" stroke="#4299E0" stroke-width="1.5"/><g transform="translate(316,182.0)"><rect x="0" y="2" width="24" height="18" rx="2" fill="none" stroke="#4299E0" stroke-width="1.5"/><rect x="0" y="2" width="24" height="6" rx="2" fill="#4299E0"/><line x1="8" y1="8" x2="8" y2="20" stroke="#4299E0" stroke-width="1.2"/><line x1="16" y1="8" x2="16" y2="20" stroke="#4299E0" stroke-width="1.2"/><line x1="0" y1="14" x2="24" y2="14" stroke="#4299E0" stroke-width="1.2"/></g><text x="350" y="192.0" font-size="14" font-weight="700" fill="#0b2026" font-family="monospace">main branch</text><text x="350" y="212.0" font-size="14" fill="#5E7077">the reviewed code</text><rect x="602" y="10" width="250" height="32" rx="16" fill="#FFAB00"/><text x="727.0" y="31" text-anchor="middle" font-size="14" font-weight="700" fill="#0b2026" letter-spacing="2">GITHUB ACTIONS</text><rect x="602" y="82.0" width="250" height="64" rx="8" fill="#FFAB00" fill-opacity="0.10" stroke="#FFAB00" stroke-width="1.5"/><g transform="translate(612,100.0)"><rect x="0" y="2" width="24" height="18" rx="2" fill="none" stroke="#FFAB00" stroke-width="1.5"/><rect x="0" y="2" width="24" height="6" rx="2" fill="#FFAB00"/><line x1="8" y1="8" x2="8" y2="20" stroke="#FFAB00" stroke-width="1.2"/><line x1="16" y1="8" x2="16" y2="20" stroke="#FFAB00" stroke-width="1.2"/><line x1="0" y1="14" x2="24" y2="14" stroke="#FFAB00" stroke-width="1.2"/><circle cx="22" cy="18" r="7" fill="#FFFFFF"/><path d="M23 13 L18.5 19 L21.5 19 L20 23.5 L26 16.5 L23 16.5 Z" fill="#FFAB00" stroke="#FFFFFF" stroke-width="0.5"/></g><text x="646" y="110.0" font-size="14" font-weight="700" fill="#0b2026" font-family="monospace">dev-deployment.yml</text><text x="646" y="130.0" font-size="14" fill="#5E7077">deploy + run, target dev</text><rect x="602" y="164.0" width="250" height="64" rx="8" fill="#FFAB00" fill-opacity="0.10" stroke="#FFAB00" stroke-width="1.5"/><g transform="translate(612,182.0)"><rect x="0" y="2" width="24" height="18" rx="2" fill="none" stroke="#FFAB00" stroke-width="1.5"/><rect x="0" y="2" width="24" height="6" rx="2" fill="#FFAB00"/><line x1="8" y1="8" x2="8" y2="20" stroke="#FFAB00" stroke-width="1.2"/><line x1="16" y1="8" x2="16" y2="20" stroke="#FFAB00" stroke-width="1.2"/><line x1="0" y1="14" x2="24" y2="14" stroke="#FFAB00" stroke-width="1.2"/><circle cx="22" cy="18" r="7" fill="#FFFFFF"/><path d="M23 13 L18.5 19 L21.5 19 L20 23.5 L26 16.5 L23 16.5 Z" fill="#FFAB00" stroke="#FFFFFF" stroke-width="0.5"/></g><text x="646" y="192.0" font-size="14" font-weight="700" fill="#0b2026" font-family="monospace">qa-deployment.yml</text><text x="646" y="212.0" font-size="14" fill="#5E7077">deploy + run, target qa</text><rect x="898" y="10" width="250" height="32" rx="16" fill="#00A972"/><text x="1023.0" y="31" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF" letter-spacing="2">DATABRICKS</text><rect x="898" y="82.0" width="250" height="64" rx="8" fill="#00A972" fill-opacity="0.10" stroke="#00A972" stroke-width="1.5"/><g transform="translate(908,100.0)"><rect x="0" y="2" width="24" height="18" rx="2" fill="none" stroke="#00A972" stroke-width="1.5"/><rect x="0" y="2" width="24" height="6" rx="2" fill="#00A972"/><line x1="8" y1="8" x2="8" y2="20" stroke="#00A972" stroke-width="1.2"/><line x1="16" y1="8" x2="16" y2="20" stroke="#00A972" stroke-width="1.2"/><line x1="0" y1="14" x2="24" y2="14" stroke="#00A972" stroke-width="1.2"/><circle cx="22" cy="18" r="8" fill="#FFFFFF"/><circle cx="19" cy="18" r="2.6" fill="none" stroke="#0b2026" stroke-width="1.3"/><circle cx="25.5" cy="18" r="2.6" fill="none" stroke="#0b2026" stroke-width="1.3"/><line x1="21.6" y1="17.6" x2="22.9" y2="17.6" stroke="#0b2026" stroke-width="1.3"/></g><text x="942" y="110.0" font-size="14" font-weight="700" fill="#0b2026" font-family="monospace">[dev] pipeline</text><text x="942" y="130.0" font-size="14" fill="#5E7077">dev schema</text><rect x="898" y="164.0" width="250" height="64" rx="8" fill="#00A972" fill-opacity="0.10" stroke="#00A972" stroke-width="1.5"/><g transform="translate(908,182.0)"><rect x="0" y="2" width="24" height="18" rx="2" fill="none" stroke="#00A972" stroke-width="1.5"/><rect x="0" y="2" width="24" height="6" rx="2" fill="#00A972"/><line x1="8" y1="8" x2="8" y2="20" stroke="#00A972" stroke-width="1.2"/><line x1="16" y1="8" x2="16" y2="20" stroke="#00A972" stroke-width="1.2"/><line x1="0" y1="14" x2="24" y2="14" stroke="#00A972" stroke-width="1.2"/><circle cx="22" cy="18" r="8" fill="#FFFFFF"/><circle cx="19" cy="18" r="2.6" fill="none" stroke="#0b2026" stroke-width="1.3"/><circle cx="25.5" cy="18" r="2.6" fill="none" stroke="#0b2026" stroke-width="1.3"/><line x1="21.6" y1="17.6" x2="22.9" y2="17.6" stroke="#0b2026" stroke-width="1.3"/></g><text x="942" y="192.0" font-size="14" font-weight="700" fill="#0b2026" font-family="monospace">QA pipeline</text><text x="942" y="212.0" font-size="14" fill="#5E7077">qa schema + QA gate</text></svg><div style="margin-top: 18px; padding: 16px 20px; background: #F9F7F4; border: 2px solid #1B5162; border-radius: 8px; font-size: 14pt; line-height: 1.55;"><strong>Same commands, new driver.</strong> The workflows run <code>databricks bundle deploy</code> and <code>databricks bundle run</code>, exactly what the Deployments panel does for you. Nobody deploys QA or production by hand.</div></div>
+# MAGIC <div style="height:18px"></div>
+# MAGIC <div class="cw">
+# MAGIC <style>
+# MAGIC .cw { font-family: sans-serif; max-width: 1100px; margin: 0 auto; color: #0b2026; } .cw * { box-sizing: border-box; }
+# MAGIC .flow-grid { display: grid; gap: 0; align-items: stretch; }
+# MAGIC .flow-step { background: #F9F7F4; border: 3px solid var(--accent, #4299E0); border-radius: 10px; padding: 16px 12px; box-shadow: 0 2px 8px rgba(27,49,57,0.08); text-align: center; min-width: 0; }
+# MAGIC .flow-num { font-size: 26pt; font-weight: 800; color: var(--accent, #4299E0); line-height: 1; margin-bottom: 8px; }
+# MAGIC .flow-label { font-size: 14pt; font-weight: 600; color: #0b2026; line-height: 1.35; }
+# MAGIC .flow-arrow { display: flex; align-items: center; justify-content: center; color: #618794; font-size: 22pt; line-height: 1; padding: 0 6px; }
+# MAGIC .flow-step.dim { background: #EEEDE9; border-color: #C2C2C2; box-shadow: none; opacity: 0.7; }
+# MAGIC .flow-step.dim .flow-num { color: #90A5B1; } .flow-step.dim .flow-label { color: #5A6F77; } .flow-arrow.dim { color: #C2C2C2; }
+# MAGIC </style>
+# MAGIC <div class="flow-grid" style="grid-template-columns:1fr auto 1fr auto 1fr auto 1fr auto 1fr;"><div class="flow-step" style="--accent:#4299E0;"><div class="flow-num">1</div><div class="flow-label">Branch<br>in your Git folder</div></div><div class="flow-arrow">&rarr;</div><div class="flow-step" style="--accent:#00A972;"><div class="flow-num">2</div><div class="flow-label">Change + deploy<br>to <code>dev</code> (you)</div></div><div class="flow-arrow">&rarr;</div><div class="flow-step" style="--accent:#FFAB00;"><div class="flow-num">3</div><div class="flow-label">Pull request<br>CI deploys <code>dev</code> + runs</div></div><div class="flow-arrow">&rarr;</div><div class="flow-step" style="--accent:#FF5F46;"><div class="flow-num">4</div><div class="flow-label">Review + merge<br>to <code>main</code></div></div><div class="flow-arrow">&rarr;</div><div class="flow-step" style="--accent:#98102A;"><div class="flow-num">5</div><div class="flow-label">CD deploys <code>qa</code><br>+ runs, QA gate</div></div></div>
+# MAGIC </div>
+# MAGIC <div style="height:18px"></div>
+# MAGIC <div class="cw">
+# MAGIC <style>
+# MAGIC .cw { font-family: sans-serif; max-width: 1100px; margin: 0 auto; color: #0b2026; } .cw * { box-sizing: border-box; }
+# MAGIC .ds-callout { border-left: 6px solid var(--accent, #1B5162); border-radius: 8px; padding: 18px 24px; background: var(--tint, #F8F9FC); box-shadow: 0 2px 8px rgba(27,49,57,0.06); font-size: 14pt; line-height: 1.55; color: #0b2026; }
+# MAGIC .ds-eyebrow { font-size: 14pt; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent, #1B5162); margin-bottom: 6px; }
+# MAGIC .ds-callout ul { margin: 0; padding-left: 20px; font-size: 14pt; line-height: 1.55; color: #0b2026; }
+# MAGIC .ds-callout li { margin-bottom: 10px; } .ds-callout li:last-child { margin-bottom: 0; }
+# MAGIC .ds-callout.info { --accent:#1B5162; --tint:#F8F9FC; }
+# MAGIC .ds-callout.caution { --accent:#FFAB00; --tint:rgba(255,171,0,0.12); }
+# MAGIC .ds-callout.danger { --accent:#FF5F46; --tint:rgba(255,95,70,0.10); }
+# MAGIC .ds-callout.success { --accent:#00A972; --tint:rgba(0,169,114,0.10); }
+# MAGIC .ds-callout.row { display: flex; align-items: center; gap: 16px; }
+# MAGIC .ds-callout-icon { width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 22pt; font-weight: 700; line-height: 1; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+# MAGIC .ds-callout.caution .ds-callout-icon { color: #0b2026; }
+# MAGIC .ds-callout-title { font-size: 16pt; font-weight: 700; color: #0b2026; margin-bottom: 10px; line-height: 1.3; }
+# MAGIC </style>
+# MAGIC <div class="ds-callout info"><div class="ds-eyebrow">The only new idea</div><div>The commands do not change: <code>databricks bundle deploy</code> and <code>databricks bundle run</code>. What changes is <strong>who</strong> runs them (a service principal, not you) and <strong>when</strong> (on a pull request, on a merge).</div></div>
+# MAGIC </div>
+# MAGIC
+# MAGIC ##### EXPAND FOR ADDITIONAL NOTES
+# MAGIC
+# MAGIC <details>
+# MAGIC
+# MAGIC - This is the Databricks-recommended path: develop in your own Git folder and dev target, review through a pull request, deploy shared environments only from CI as a service principal.
+# MAGIC - The facilitator demo repo runs exactly the two files below.
+# MAGIC - Start simple: deploy and run. Add unit tests, data checks and approvals later, one at a time.
+# MAGIC
+# MAGIC </details>
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC **`.github/workflows/dev-deployment.yml`**: a pull request to `main` deploys the bundle to `dev` and runs the pipeline.
+# MAGIC ```yaml
+# MAGIC name: Dev deployment
+# MAGIC on:
+# MAGIC   pull_request:
+# MAGIC     branches: [main]
+# MAGIC permissions:
+# MAGIC   id-token: write          # lets GitHub sign in to Databricks (no stored password)
+# MAGIC   contents: read
+# MAGIC jobs:
+# MAGIC   deploy:
+# MAGIC     runs-on: ubuntu-latest
+# MAGIC     environment: dev
+# MAGIC     env:
+# MAGIC       DATABRICKS_AUTH_TYPE: github-oidc
+# MAGIC       DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
+# MAGIC       DATABRICKS_CLIENT_ID: ${{ secrets.DATABRICKS_CLIENT_ID }}   # the service principal
+# MAGIC       DATABRICKS_BUNDLE_TARGET: dev
+# MAGIC     steps:
+# MAGIC       - uses: actions/checkout@v4
+# MAGIC       - uses: databricks/setup-cli@main             # installs the Databricks CLI
+# MAGIC       - run: databricks bundle deploy               # validates, then deploys
+# MAGIC       - run: databricks bundle run iops_quality_etl # runs the pipeline
+# MAGIC ```
+# MAGIC
+# MAGIC **`.github/workflows/qa-deployment.yml`**: the same steps on a merge to `main`, with `environment: qa` and `DATABRICKS_BUNDLE_TARGET: qa`.
+# MAGIC ```yaml
+# MAGIC name: QA deployment
+# MAGIC on:
+# MAGIC   push:
+# MAGIC     branches: [main]
+# MAGIC # ... same permissions, env (target qa) and steps as above
+# MAGIC ```
+
+# COMMAND ----------
+
+# MAGIC %md-sandbox
+# MAGIC <div class="cw">
+# MAGIC <style>
+# MAGIC .cw { font-family: sans-serif; max-width: 1100px; margin: 0 auto; color: #0b2026; } .cw * { box-sizing: border-box; }
+# MAGIC .ds-row { display: flex; gap: 24px; align-items: stretch; flex-wrap: wrap; }
+# MAGIC .ds-row > * { flex: 1; min-width: 240px; }
+# MAGIC .ds-card { background: #F9F7F4; border-radius: 8px; box-shadow: 0 2px 8px rgba(27,49,57,0.06); padding: 20px; border-top: 8px solid var(--accent, #4299E0); }
+# MAGIC .blue{--accent:#4299E0;} .green{--accent:#00A972;} .coral{--accent:#FF5F46;} .amber{--accent:#FFAB00;} .red{--accent:#98102A;}
+# MAGIC .ds-card-title { font-size: 18pt; font-weight: 700; line-height: 1.25; margin: 0 0 8px; }
+# MAGIC .ds-card-text { font-size: 14pt; color: #5E7077; line-height: 1.55; margin: 0; }
+# MAGIC .ds-card ul, .ds-card ol { margin: 8px 0 0; padding-left: 20px; font-size: 14pt; line-height: 1.55; color: #0b2026; }
+# MAGIC .ds-card li { margin-bottom: 10px; } .ds-card li:last-child { margin-bottom: 0; }
+# MAGIC .tc { text-align: center; }
+# MAGIC .ds-card-label { font-size: 14pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+# MAGIC .ds-card-para { font-size: 14pt; color: #0b2026; line-height: 1.55; margin: 0; }
+# MAGIC .ds-stat { font-size: 26pt; font-weight: 800; color: var(--accent); line-height: 1.1; }
+# MAGIC .ds-stat-label { font-size: 14pt; color: #5E7077; margin-top: 6px; }
+# MAGIC .dd-head { font-size: 20pt; font-weight: 700; margin: 4px 0 12px; color: var(--accent); }
+# MAGIC .ds-card code, .ds-callout code { background: #EEEDE9; padding: 1px 5px; border-radius: 4px; font-size: 14pt; }
+# MAGIC </style>
+# MAGIC <div style="font-size:20pt;font-weight:700;margin-bottom:14px;">Set up once, then it is just Git</div><div class="ds-row"><div class="ds-card blue"><div class="ds-card-label">In Databricks (an admin, once)</div><div class="ds-card-title">A service principal</div><ul><li>Owns and runs the QA pipeline</li><li>A <strong>federation policy</strong> trusts this repo + environment</li><li>Grants on the catalog and schemas</li></ul></div><div class="ds-card green"><div class="ds-card-label">In GitHub (once)</div><div class="ds-card-title">Environments and a variable</div><ul><li>Environments <code>dev</code> and <code>qa</code></li><li>Variable <code>DATABRICKS_HOST</code></li><li>Secret <code>DATABRICKS_CLIENT_ID</code></li></ul></div><div class="ds-card amber"><div class="ds-card-label">Then, every change</div><div class="ds-card-title">Just Git</div><ul><li>Branch, commit, pull request</li><li>CI deploys and runs dev</li><li>Merge: CD deploys and runs QA</li></ul></div></div>
+# MAGIC </div>
+# MAGIC
+# MAGIC ##### EXPAND FOR ADDITIONAL NOTES
+# MAGIC
+# MAGIC <details>
+# MAGIC
+# MAGIC - Why a federation policy: GitHub proves who it is with a short-lived token; Databricks trusts that token for one repo and environment. No secret to leak or rotate.
+# MAGIC - Docs: GitHub Actions with Databricks (Public Preview), and Enable workload identity federation for GitHub Actions.
+# MAGIC
+# MAGIC </details>
+
+# COMMAND ----------
+
+# MAGIC %md
 # MAGIC ## Conclusion
 # MAGIC
 # MAGIC In this lecture, you:
@@ -349,7 +475,8 @@
 # MAGIC 2. Read what changes per target in `databricks.yml`
 # MAGIC 3. Used variables to make the same project run in any workspace
 # MAGIC 4. Saw how the QA gate stops a bad promotion
-# MAGIC 5. Listed the controls a production deployment needs
+# MAGIC 5. Saw GitHub Actions deploy the same bundle on a pull request and on a merge
+# MAGIC 6. Listed the controls a production deployment needs
 # MAGIC
 # MAGIC ### Next Steps
 # MAGIC
